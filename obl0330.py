@@ -2231,6 +2231,9 @@ class ContainerConverter:
                         ws.cell(row=cntr_count, column=8, value="UNSET")
                     if not ws.cell(row=cntr_count, column=7).value:
                         ws.cell(row=cntr_count, column=7, value="UNSET")
+                    # F/E 값이 비어있는 경우 'F'로 설정
+                    if not ws.cell(row=cntr_count, column=11).value:
+                        ws.cell(row=cntr_count, column=11, value="F")
 
                 # MEA (무게 정보) 처리
                 elif edi_lines[0] == "MEA" and len(edi_lines) > 3:
