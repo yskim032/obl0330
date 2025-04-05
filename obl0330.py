@@ -144,7 +144,8 @@ class ContainerConverter:
         self.itps_tab = ttk.Frame(self.tab_control)
         self.stowage_tab = ttk.Frame(self.tab_control)
         self.tpsz_tab = ttk.Frame(self.tab_control)
-        self.edi_tab = ttk.Frame(self.tab_control)  # EDI PARSER 탭 추가
+        self.edi_tab = ttk.Frame(self.tab_control)
+        self.asc_parser_tab = ttk.Frame(self.tab_control)  # ASC Parser 탭 추가
         
         # 탭 추가
         self.tab_control.add(self.single_tab, text='단일 CLL 변환')
@@ -152,7 +153,8 @@ class ContainerConverter:
         self.tab_control.add(self.itps_tab, text='ITPS 추가')
         self.tab_control.add(self.stowage_tab, text='STOWAGE CODE 관리')
         self.tab_control.add(self.tpsz_tab, text='TpSZ 관리')
-        self.tab_control.add(self.edi_tab, text='EDI PARSER')  # EDI PARSER 탭 추가
+        self.tab_control.add(self.edi_tab, text='EDI PARSER')
+        self.tab_control.add(self.asc_parser_tab, text='ASC Parser')  # ASC Parser 탭 추가
         
         # 각 탭 설정
         self.setup_single_tab()
@@ -160,8 +162,9 @@ class ContainerConverter:
         self.setup_itps_tab()
         self.setup_stowage_tab()
         self.setup_tpsz_tab()
-        self.setup_edi_tab()  # EDI PARSER 탭 설정 메서드 호출
-        
+        self.setup_edi_tab()
+        self.setup_asc_parser_tab()  # ASC Parser 탭 설정
+
         # JSON 파일 내용 표시
         self.update_stowage_preview()  # Stowage 탭 업데이트
         self.update_tpsz_preview()     # TpSZ 탭 업데이트
@@ -169,10 +172,10 @@ class ContainerConverter:
     def setup_single_tab(self):
         # 단일 CLL 변환 탭 설정
         left_frame = ttk.Frame(self.single_tab)
-        left_frame.pack(side="left", fill="both", expand=True, padx=5)
+        self.single_tab.add(left_frame, text='단일 CLL 변환')
         
         right_frame = ttk.Frame(self.single_tab)
-        right_frame.pack(side="right", fill="both", padx=5)
+        self.single_tab.add(right_frame, text='단일 CLL 변환')
         
         # POL, TOL 선택 프레임
         port_frame = ttk.LabelFrame(left_frame, text="POL TOL")
@@ -289,10 +292,10 @@ class ContainerConverter:
         """CLL 파일 병합 탭 설정"""
         # 좌우 분할
         left_frame = ttk.Frame(self.multi_cll_tab)
-        left_frame.pack(side="left", fill="both", expand=True, padx=5)
+        self.multi_cll_tab.add(left_frame, text='Multi CLL 변환')
         
         right_frame = ttk.Frame(self.multi_cll_tab)
-        right_frame.pack(side="right", fill="both", padx=5)
+        self.multi_cll_tab.add(right_frame, text='Multi CLL 변환')
         
         # POL/TOL 선택 프레임
         port_frame = ttk.LabelFrame(left_frame, text="POL TOL")
@@ -381,10 +384,10 @@ class ContainerConverter:
         """ITPS 추가 탭 설정"""
         # 좌우 분할
         left_frame = ttk.Frame(self.itps_tab)
-        left_frame.pack(side="left", fill="both", expand=True, padx=5)
+        self.itps_tab.add(left_frame, text='ITPS 추가')
         
         right_frame = ttk.Frame(self.itps_tab)
-        right_frame.pack(side="right", fill="both", padx=5)
+        self.itps_tab.add(right_frame, text='ITPS 추가')
 
         # 파일 정보 표시 영역
         info_frame = ttk.LabelFrame(left_frame, text="파일 정보")
@@ -433,8 +436,8 @@ class ContainerConverter:
         """STOWAGE CODE 관리 탭 설정"""
         # 메인 프레임
         main_frame = ttk.Frame(self.stowage_tab)
-        main_frame.pack(fill="both", expand=True, padx=10, pady=10)
-
+        self.stowage_tab.add(main_frame, text='STOWAGE CODE 관리')
+        
         # 드래그 & 드롭 영역
         drop_frame = ttk.LabelFrame(main_frame, text="Stowage Code 엑셀 파일")
         drop_frame.pack(fill="x", pady=(0, 10))
@@ -1789,8 +1792,8 @@ class ContainerConverter:
         """TpSZ 관리 탭 설정"""
         # 메인 프레임
         main_frame = ttk.Frame(self.tpsz_tab)
-        main_frame.pack(fill="both", expand=True, padx=10, pady=10)
-
+        self.tpsz_tab.add(main_frame, text='TpSZ 관리')
+        
         # 드래그 & 드롭 영역
         drop_frame = ttk.LabelFrame(main_frame, text="TpSZ 엑셀 파일")
         drop_frame.pack(fill="x", pady=(0, 10))
@@ -2103,8 +2106,8 @@ class ContainerConverter:
         # 좌우 분할을 위한 프레임
         left_frame = ttk.Frame(self.edi_tab)
         right_frame = ttk.Frame(self.edi_tab)
-        left_frame.pack(side="left", fill="both", expand=True, padx=5)
-        right_frame.pack(side="right", fill="both", expand=True, padx=5)
+        self.edi_tab.add(left_frame, text='EDI PARSER')
+        self.edi_tab.add(right_frame, text='EDI PARSER')
 
         # 왼쪽: EDI 파일 드래그 앤 드롭 영역
         drop_frame = ttk.LabelFrame(left_frame, text="EDI 파일 드래그 앤 드롭")
@@ -2135,7 +2138,7 @@ class ContainerConverter:
 
         # POD 표시를 위한 프레임 추가
         pod_frame = ttk.LabelFrame(self.edi_tab, text="추출된 POD", padding="5")
-        pod_frame.pack(fill="x", padx=5, pady=5)
+        self.edi_tab.add(pod_frame, text='추출된 POD')
         
         # POD 값을 표시할 레이블 추가
         self.pod_label = ttk.Label(pod_frame, text="EDI 파일을 드래그 앤 드롭하세요")
@@ -2682,6 +2685,71 @@ class ContainerConverter:
         except Exception as e:
             print(f"Error processing EDI file: {str(e)}")
             messagebox.showerror("오류", f"EDI 파일 처리 중 오류가 발생했습니다: {str(e)}")
+
+    def setup_asc_parser_tab(self):
+        # 드래그 앤 드롭 영역 생성
+        drop_frame = ttk.LabelFrame(self.asc_parser_tab, text="Drag and Drop ASC File")
+        drop_frame.pack(fill='both', expand=True, padx=5, pady=5)
+
+        # 드롭 영역 레이블
+        self.asc_drop_label = ttk.Label(drop_frame, text="Drop ASC file here", relief="solid", padding=20)
+        self.asc_drop_label.pack(fill='both', expand=True, padx=5, pady=5)
+
+        # 드래그 앤 드롭 바인딩
+        self.asc_drop_label.drop_target_register(DND_FILES)
+        self.asc_drop_label.dnd_bind('<<Drop>>', self.drop_asc_file)
+
+        # 상태 표시 레이블
+        self.asc_status_label = ttk.Label(self.asc_parser_tab, text="")
+        self.asc_status_label.pack(fill='x', padx=5, pady=5)
+
+    def drop_asc_file(self, event):
+        file_path = event.data
+        # Windows 경로에서 따옴표 제거
+        file_path = file_path.strip('{}')
+        
+        if not file_path.lower().endswith('.asc'):
+            messagebox.showerror("Error", "Please drop an ASC file")
+            return
+
+        try:
+            self.process_asc_file(file_path)
+        except Exception as e:
+            messagebox.showerror("Error", f"Error processing ASC file: {str(e)}")
+
+    def process_asc_file(self, file_path):
+        # ASC 파일 읽기
+        with open(file_path, 'r', encoding='utf-8') as file:
+            lines = file.readlines()
+
+        # 헤더 정보 파싱
+        header = lines[0].strip()
+        header_parts = header.split('/')
+        
+        # 데이터 파싱
+        data = []
+        for line in lines[1:]:
+            if line.strip():
+                parts = line.strip().split()
+                if len(parts) >= 4:  # 최소 필요한 필드 수 확인
+                    container_info = {
+                        'Container No': parts[1],
+                        'Carrier': parts[2],
+                        'Container Type': parts[3],
+                        'Destination': parts[-1] if len(parts) > 4 else ''
+                    }
+                    data.append(container_info)
+
+        # DataFrame 생성
+        df = pd.DataFrame(data)
+
+        # Excel 파일로 저장
+        output_path = os.path.splitext(file_path)[0] + '_parsed.xlsx'
+        df.to_excel(output_path, index=False)
+
+        # 상태 업데이트
+        self.asc_status_label.config(text=f"File processed successfully. Saved as: {output_path}")
+        messagebox.showinfo("Success", f"ASC file has been processed and saved as Excel file:\n{output_path}")
 
 if __name__ == "__main__":
     app = ContainerConverter()

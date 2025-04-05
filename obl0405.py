@@ -33,7 +33,7 @@ class ContainerConverter:
         self.config_dir = os.path.join(self.desktop_path, "OBL_Configs")
         
         # port_codes 딕셔너리 추가
-        self.port_codes = {'AEAJM': 'AJMAN', 'AEAUH': 'ABU DHABI', 'AEDXB': 'DUBAI', 'AEFJR': 'AL - FUJAYRAH', 'AEJEA': 'JEBEL ALI', 'AEKLF': 'KHOR AL FAKKAN', 'AEPRA': 'PORT RASHID', 'AEQIW': 'UMM AL QAIWAIN', 'AERKT': 'RAS AL KHAIMAH', 'AESHJ': 'SHARJAH', 'AEYAS': 'YAS ISLAND', 'AGANU': 'ANTIGUA', 'AIRBY': 'ROAD BAY', 'ALDRZ': 'DURRES', 'ALSAR': 'SARANDE', 'AOLAD': 'LUANDA', 'AOLOB': 'LOBITO', 'AOMSZ': 'NAMIBE', 'ARBHI': 'BAHIA BLANCA', 'ARBUE': 'BUENOS AIRES', 'ARCMP': 'CAMPANA', 'ARCNQ': 'CORRIENTES', 'ARLPG': 'LA PLATA', 'ARMDQ': 'MAR DEL PLATA', 'ARPMY': 'PUERTO MADRYN', 'ARPSS': 'POSADAS', 'ARROS': 'ROSARIO', 'ARSAE': 'SAN ANTONIO ESTE', 'ARUSH': 'USHUAIA', 'ARZAE': 'ZARATE', 'ASPPG': 'PAGO PAGO', 'AUABP': 'ABBOT POINT', 'AUADL': 'ADELAIDE', 'AUALH': 'ALBANY', 'AUBEL': 'BELL BAY', 'AUBNE': 'BRISBANE', 'AUBOO': 'BOOBY ISLAND', 'AUCNS': 'CAIRNS', 'AUDRW': 'DARWIN', 'AUEPR': 'ESPERANCE', 'AUFRE': 'FREMANTLE', 'AUGLT': 'GLADSTONE', 'AUHBA': 'HOBART', 'AUHPT': 'HAY POINT', 'AUMEL': 'MELBOURNE', 'AUNTL': 'NEWCASTLE', 'AUPHE': 'PORT HEDLAND', 'AUPKL': 'PORT KEMBLA', 'AUSYD': 'SYDNEY', 'AWORJ': 'ORANJESTAD', 'BBBGI': 'BRIDGETOWN', 'BDCGP': 'CHATTOGRAM', 'BDMGL': 'MONGLA', 'BEANR': 'ANTWERP', 'BEGNE': 'GENT (GHENT)', 'BEZEE': 'ZEEBRUGGE', 'BGBOJ': 'BURGAS', 'BGVAR': 'VARNA', 'BHKBS': 'BAHRAIN', 'BJCOO': 'COTONOU', 'BMBDA': 'HAMILTON', 'BMKWF': 'KINGS WHARF', 'BNMUA': 'MUARA', 'BQEUX': 'SINT EUSTATIUS', 'BRACB': 'ARRAIAL DO CABO', 'BRADR': 'ANGRA DOS REIS', 'BRANG': 'ARTUR NOGUEIRA', 'BRBEL': 'BELEM', 'BRBZC': 'BUZIOS', 'BRCBU': 'CAMBORIU', 'BRCDO': 'CABEDELO', 'BRCOP': 'CARMO DO PARANAIBA', 'BRFOR': 'FORTALEZA', 'BRIBB': 'IMBITUBA', 'BRIBE': 'ILHABELA', 'BRIGE': 'ILHA GRANDE', 'BRIGI': 'ITAGUAI', 'BRIOA': 'ITAPOA', 'BRIOS': 'ILHEUS', 'BRIQI': 'ITAQUI', 'BRITA': 'ITACOATIARA', 'BRITJ': 'ITAJAI', 'BRMAO': 'MANAUS', 'BRMCZ': 'MACEIO', 'BRNVT': 'NAVEGANTES', 'BRPBO': 'PORTO BELO', 'BRPEC': 'PECEM', 'BRPNG': 'PARANAGUA', 'BRPVH': 'PORTO VELHO', 'BRQCK': 'CABO FRIO', 'BRREC': 'RECIFE', 'BRRIG': 'RIO GRANDE', 'BRRIO': 'RIO DE JANEIRO', 'BRSFS': 'SAO FRANCISCO DO SUL', 'BRSSA': 'SALVADOR', 'BRSSZ': 'SANTOS', 'BRSTM': 'SANTAREM', 'BRSUA': 'SUAPE', 'BRUBT': 'UBATUBA', 'BRVIX': 'VITORIA', 'BRVLC': 'VILA DO CONDE', 'BSCOC': 'COCO CAY'}
+        self.port_codes = {'AEAJM': 'AJMAN', 'AEAUH': 'ABU DHABI', 'AEDXB': 'DUBAI', 'AEFJR': 'AL - FUJAYRAH', 'AEJEA': 'JEBEL ALI', 'AEKLF': 'KHOR AL FAKKAN', 'AEPRA': 'PORT RASHID', 'AEQIW': 'UMM AL QAIWAIN', 'AERKT': 'RAS AL KHAIMAH', 'AESHJ': 'SHARJAH', 'AEYAS': 'YAS ISLAND', 'AGANU': 'ANTIGUA', 'AIRBY': 'ROAD BAY', 'ALDRZ': 'DURRES', 'ALSAR': 'SARANDE', 'AOLAD': 'LUANDA', 'AOLOB': 'LOBITO', 'AOMSZ': 'NAMIBE', 'ARBHI': 'BAHIA BLANCA', 'ARBUE': 'BUENOS AIRES', 'ARCMP': 'CAMPANA', 'ARCNQ': 'CORRIENTES', 'ARLPG': 'LA PLATA', 'ARMDQ': 'MAR DEL PLATA', 'ARPMY': 'PUERTO MADRYN', 'ARPSS': 'POSADAS', 'ARROS': 'ROSARIO', 'ARSAE': 'SAN ANTONIO ESTE', 'ARUSH': 'USHUAIA', 'ARZAE': 'ZARATE', 'ASPPG': 'PAGO PAGO', 'AUABP': 'ABBOT POINT', 'AUADL': 'ADELAIDE', 'AUALH': 'ALBANY', 'AUBEL': 'BELL BAY', 'AUBNE': 'BRISBANE', 'AUBOO': 'BOOBY ISLAND', 'AUCNS': 'CAIRNS', 'AUDRW': 'DARWIN', 'AUEPR': 'ESPERANCE', 'AUFRE': 'FREMANTLE', 'AUGLT': 'GLADSTONE', 'AUHBA': 'HOBART', 'AUHPT': 'HAY POINT', 'AUMEL': 'MELBOURNE', 'AUNTL': 'NEWCASTLE', 'AUPHE': 'PORT HEDLAND', 'AUPKL': 'PORT KEMBLA', 'AUSYD': 'SYDNEY', 'AWORJ': 'ORANJESTAD', 'BBBGI': 'BRIDGETOWN', 'BDCGP': 'CHATTOGRAM', 'BDMGL': 'MONGLA', 'BEANR': 'ANTWERP', 'BEGNE': 'GENT (GHENT)', 'BEZEE': 'ZEEBRUGGE', 'BGBOJ': 'BURGAS', 'BGVAR': 'VARNA', 'BHKBS': 'BAHRAIN', 'BJCOO': 'COTONOU', 'BMBDA': 'HAMILTON', 'BMKWF': 'KINGS WHARF', 'BNMUA': 'MUARA', 'BQEUX': 'SINT EUSTATIUS', 'BRACB': 'ARRAIAL DO CABO', 'BRADR': 'ANGRA DOS REIS', 'BRANG': 'ARTUR NOGUEIRA', 'BRBEL': 'BELEM', 'BRBZC': 'BUZIOS', 'BRCBU': 'CAMBORIU', 'BRCDO': 'CABEDELO', 'BRCOP': 'CARMO DO PARANAIBA', 'BRFOR': 'FORTALEZA', 'BRIBB': 'IMBITUBA', 'BRIBE': 'ILHABELA', 'BRIGE': 'ILHA GRANDE', 'BRIGI': 'ITAGUAI', 'BRIOA': 'ITAPOA', 'BRIOS': 'ILHEUS', 'BRIQI': 'ITAQUI', 'BRITA': 'ITACOATIARA', 'BRITJ': 'ITAJAI', 'BRMAO': 'MANAUS', 'BRMCZ': 'MACEIO', 'BRNVT': 'NAVEGANTES', 'BRPBO': 'PORTO BELO', 'BRPEC': 'PECEM', 'BRPNG': 'PARANAGUA', 'BRPVH': 'PORTO VELHO', 'BRQCK': 'CABO FRIO', 'BRREC': 'RECIFE', 'BRRIG': 'RIO GRANDE', 'BRRIO': 'RIO DE JANEIRO', 'BRSFS': 'SAO FRANCISCO DO SUL', 'BRSSA': 'SALVADOR', 'BRSSZ': 'SANTOS', 'BRSTM': 'SANTAREM', 'BRSUA': 'SUAPE', 'BRUBT': 'UBATUBA', 'BRVIX': 'VITORIA', 'BRVLC': 'VILA DO CONDE', 'BSCOC': 'COCO CAY', 'BSFPO': 'FREEPORT, GRAND BAHAMA', 'BSGSC': 'GREAT STIRRUP CAY', 'BSHMC': 'LITTLE SAN SALVADOR', 'BSLUC': 'LUCAYA', 'BSNAS': 'NASSAU', 'BZBZE': 'BELIZE CITY', 'CABCO': 'BAIE COMEAU', 'CABEC': 'BECANCOUR', 'CACBK': 'CORNER BROOK', 'CACHA': 'CHARLOTTETOWN', 'CAGPE': 'GASPE', 'CAHAL': 'HALIFAX', 'CAHSP': 'HAVRE-SAINT-PIERRE', 'CALBA': 'LA BAIE', 'CAMTR': 'MONTREAL', 'CAPRR': 'PRINCE RUPERT', 'CAQUE': 'QUEBEC', 'CASJB': 'SAINT JOHN', 'CASYD': 'SYDNEY', 'CATRR': 'TROIS-RIVIERES (THREE RIVERS)', 'CAVAN': 'VANCOUVER', 'CCCCK': 'COCOS ISLANDS', 'CDMAT': 'MATADI', 'CGPNR': 'POINTE NOIRE', 'CIABJ': 'ABIDJAN', 'CISPY': 'SAN-PEDRO', 'CKAIT': 'AITUTAKI', 'CKRAR': 'RAROTONGA', 'CLANF': 'ANTOFAGASTA', 'CLARI': 'ARICA', 'CLCNL': 'CORONEL', 'CLCQQ': 'COQUIMBO', 'CLIPC': 'ISLA DE PASCUA', 'CLIQQ': 'IQUIQUE', 'CLLQN': 'LIRQUEN', 'CLPAG': 'PUERTO ANGAMOS', 'CLPPY': 'MAGELLAN STRAIT', 'CLSAI': 'SAN ANTONIO', 'CLSVE': 'SAN VICENTE', 'CLVAP': 'VALPARAISO', 'CMDLA': 'DOUALA', 'CMKBI': 'KRIBI', 'CNBHT': 'TIESHAN', 'CNCAN': 'GUANGZHOU', 'CNCFD': 'CAOFEIDIAN', 'CNDCB': 'DA CHAN BAY', 'CNDLC': 'DALIAN', 'CNFAN': 'FANGCHENG', 'CNFOC': 'FUZHOU', 'CNHAK': 'HAIKOU', 'CNHNH': 'HUANGHUA', 'CNHUA': 'HUANGPU', 'CNJIA': 'JIANGYIN', 'CNJIN': 'JINGTANG (TANGSHAN)', 'CNLUH': 'LU-HUA SHAN', 'CNLYG': 'LIANYUNGANG', 'CNMAW': 'MAWEI', 'CNMWN': 'MAWAN', 'CNNGB': 'NINGBO', 'CNNKG': 'NANJING', 'CNNSA': 'NANSHA', 'CNNTG': 'NANTONG', 'CNQZH': 'QINZHOU', 'CNRZH': 'RIZHAO', 'CNSHA': 'SHANGHAI', 'CNSHG': 'SANSHAN', 'CNSHK': 'SHEKOU', 'CNSHP': 'QINHUANGDAO', 'CNSWA': 'SHANTOU', 'CNSYX': 'SANYA', 'CNTAG': 'TAICANG', 'CNTAO': 'QINGDAO', 'CNTSI': 'JINGJIANG', 'CNTXG': 'TIANJINXINGANG', 'CNWEF': 'WEIFANG', 'CNWEI': 'WEIHAI', 'CNXMN': 'XIAMEN', 'CNXSI': 'XIANGSHUI', 'CNYNT': 'YANTAI', 'CNYTN': 'YANTIAN', 'CNZJG': 'ZHANGJIAGANG', 'CNZOS': 'ZHOUSHAN', 'COBAQ': 'BARRANQUILLA', 'COBUN': 'BUENAVENTURA', 'COCTG': 'CARTAGENA', 'COSMR': 'SANTA MARTA', 'COTRB': 'TURBO', 'CRCAL': 'CALDERA', 'CRLIO': 'PUERTO LIMON', 'CRMOB': 'MOIN', 'CUGER': 'NUEVA GERONA', 'CUHAV': 'LA HABANA', 'CUMAR': 'MARIEL', 'CVMIN': 'MINDELO', 'CVRAI': 'PRAIA', 'CWCUR': 'CURACAO', 'CYFMG': 'FAMAGUSTA', 'CYLMS': 'LIMASSOL', 'DEBRB': 'BRUNSBUTTEL', 'DEBRE': 'BREMEN', 'DEBRV': 'BREMERHAVEN', 'DEELS': 'ELSFLETH', 'DEEME': 'EMDEN', 'DEHAM': 'HAMBURG', 'DEHGL': 'HELGOLAND', 'DEKEL': 'KIEL', 'DELBC': 'LUBECK', 'DEWAR': 'WARNEMUNDE', 'DEWVN': 'WILHELMSHAVEN', 'DJJIB': 'DJIBOUTI', 'DKAAL': 'AALBORG', 'DKAAR': 'AARHUS', 'DKCPH': 'COPENHAGEN', 'DKFRC': 'FREDERICIA', 'DKGBT': 'GREAT BELT', 'DKHVS': 'HVIDE SANDE', 'DKKAL': 'KALUNDBORG', 'DKKLD': 'KOLIND', 'DKKTD': 'KERTEMINDE', 'DKODE': 'ODENSE', 'DKRNN': 'RONNE', 'DKSKA': 'SKAGEN', 'DMPOR': 'PORTSMOUTH', 'DMRSU': 'ROSEAU', 'DOCAU': 'CAUCEDO', 'DOHAI': 'RIO HAINA', 'DOPOP': 'PUERTO PLATA', 'DZAAE': 'ANNABA', 'DZALG': 'ALGER', 'DZAZW': 'ARZEW', 'DZBJA': 'BEJAIA', 'DZDJE': 'DJEN-DJEN', 'DZGHZ': 'GHAZAOUET', 'DZORN': 'ORAN', 'DZSKI': 'SKIKDA', 'ECESM': 'ESMERALDAS', 'ECGYE': 'GUAYAQUIL', 'ECLLD': 'LA LIBERTAD', 'ECPBO': 'PUERTO BOLIVAR', 'ECPSJ': 'POSORJA', 'EETLL': 'TALLINN', 'EGAKI': 'ABU KIR', 'EGALY': 'ALEXANDRIA OLD PORT', 'EGDAM': 'DAMIETTA', 'EGEDK': 'ALEXANDRIA EL DEKHEILA', 'EGPSE': 'PORT SAID EAST', 'EGPSW': 'PORT SAID WEST', 'EGSGA': 'SAFAGA', 'EGSOK': 'SOKHNA PORT', 'EGSSH': 'SHARM ASH SHAYKH', 'EGSUZ': 'SUEZ', 'ERASA': 'ASSAB', 'ESACE': 'ARRECIFE DE LANZAROTE', 'ESAGP': 'MALAGA', 'ESALC': 'ALICANTE', 'ESALG': 'ALGECIRAS', 'ESALM': 'ALMAGRO', 'ESBCN': 'BARCELONA', 'ESBIO': 'BILBAO', 'ESCAD': 'CADIZ', 'ESCAR': 'CARTAGENA', 'ESCAS': 'CASTELLON DE LA PLANA', 'ESCEU': 'CEUTA', 'ESFRO': 'FERROL', 'ESFUE': 'PUERTO DEL ROSARIO-FUERTEVENTURA', 'ESGIJ': 'GIJON', 'ESGJI': 'GRANJA DE SAN IDELFONSO', 'ESHUV': 'HUELVA', 'ESIBZ': 'IBIZA', 'ESLCG': 'LA CORUNA', 'ESLEI': 'ALMERIA', 'ESLPA': 'LAS PALMAS', 'ESMAH': 'MAHON, MENORCA', 'ESMPG': 'MARIN, PONTEVEDRA', 'ESPAL': 'PALAMOS', 'ESPMI': 'PALMA DE MALLORCA', 'ESROS': 'ROSAS', 'ESSAG': 'SAGUNTO', 'ESSCT': 'SANTA CRUZ DE TENERIFE', 'ESSPC': 'SANTA CRUZ DE LA PALMA', 'ESSSG': 'SAN SEBASTIAN DE LA GOMERA', 'ESSVQ': 'SEVILLA', 'ESTAR': 'TARRAGONA', 'ESVGO': 'VIGO', 'ESVLC': 'VALENCIA', 'FIHEL': 'HELSINKI', 'FIKEM': 'KEMI', 'FIKOK': 'KOKKOLA (KARLEBY)', 'FIKTK': 'KOTKA', 'FIOUL': 'OULU (ULEABORG)', 'FIRAU': 'RAUMA', 'FITOR': 'TORNIO (TORNEA)', 'FJLTK': 'LAUTOKA', 'FJSUV': 'SUVA', 'FOTHO': 'THORSHAVN', 'FRAJA': 'AJACCIO', 'FRBES': 'BREST', 'FRBOD': 'BORDEAUX', 'FRCEQ': 'CANNES', 'FRCER': 'CHERBOURG', 'FRDKK': 'DUNKERQUE', 'FRFOS': 'FOS-SUR-MER', 'FRGVL': 'GENNEVILLIERS', 'FRHON': 'HONFLEUR', 'FRLEH': 'LE HAVRE', 'FRLRH': 'LA ROCHELLE', 'FRLVE': 'LE VERDON', 'FRMRS': 'MARSEILLE', 'FRMTX': 'MONTOIR-DE-BRETAGNE', 'FRNCE': 'NICE', 'FRSET': 'SETE', 'FRSFP': 'SIX-FOURS-LES-PLAGES', 'FRSNR': 'ST NAZAIRE', 'FRSTM': 'ST MARCEL', 'FRSTP': 'ST TROPEZ', 'FRTLN': 'TOULON', 'FRURO': 'ROUEN', 'FRVFM': 'VILLEFRANCHE-SUR-MER', 'GALBV': 'LIBREVILLE', 'GAPOG': 'PORT GENTIL', 'GBBEL': 'BELFAST', 'GBBRS': 'BRISTOL', 'GBDVR': 'DOVER', 'GBFAL': 'FALMOUTH', 'GBFXT': 'FELIXSTOWE', 'GBGRG': 'GRANGEMOUTH', 'GBGRK': 'GREENOCK', 'GBHRW': 'HARWICH', 'GBIMM': 'IMMINGHAM', 'GBLER': 'LERWICK', 'GBLGP': 'LONDON GATEWAY PORT', 'GBLIV': 'LIVERPOOL', 'GBNCS': 'NEWCASTLE', 'GBPME': 'PORTSMOUTH', 'GBPRT': 'PORTREE', 'GBPRU': 'PORTBURY', 'GBPTL': 'PORTLAND', 'GBSOQ': 'SOUTH QUEENSFERRY', 'GBSOU': 'SOUTHAMPTON', 'GBSSH': 'SOUTH SHIELDS', 'GBTEE': 'TEESPORT', 'GBTHP': 'THAMESPORT', 'GBTIL': 'TILBURY', 'GDGND': 'GRENADA', 'GDSTG': "SAINT GEORGE'S", 'GEBUS': 'BATUMI', 'GEPTI': 'POTI', 'GGSPT': 'ST PETER PORT', 'GHTEM': 'TEMA', 'GHTKD': 'TAKORADI', 'GIGIB': 'GIBRALTAR', 'GLGOH': 'NUUK (GODTHAAB)', 'GLJFR': 'PAAMIUT (FREDRIKSHAAB)', 'GMBJL': 'BANJUL', 'GNCKY': 'CONAKRY', 'GPPTP': 'POINTE-A-PITRE', 'GRARM': 'ARGOSTOLION', 'GRCFU': 'KERKIRA (CORFU)', 'GRCHQ': 'CANEA (CHANIA)', 'GRELE': 'ELEFSIS (ELEVSIS)', 'GRGYT': 'GYTHION', 'GRHER': 'HERAKLION', 'GRJMK': 'MYKONOS', 'GRJSY': 'SYROS (SYRA)', 'GRJTR': 'THIRA', 'GRKAK': 'KATAKOLON', 'GRKGS': 'KOS', 'GRKLL': 'KALILIMENES', 'GRKLX': 'KALAMATA', 'GRLAV': 'LAURIUM (LAVRION)', 'GRMDR': 'MOUDHROS', 'GRMON': 'MONEMVASIA', 'GRNAF': 'NAFPLION', 'GRPIR': 'PIRAEUS', 'GRPMS': 'PATMOS', 'GRRHO': 'RHODES', 'GRSDH': 'SOUDA', 'GRSKA': 'SKARAMANGAS', 'GRSKG': 'THESSALONIKI', 'GRTIL': 'TILOS', 'GRVOL': 'VOLOS', 'GRZTH': 'ZAKYNTHOS', 'GTPBR': 'PUERTO BARRIOS', 'GTPRQ': 'PUERTO QUETZAL', 'GTSTC': 'PUERTO SANTO TOMAS DE CASTILLA', 'GWOXB': 'BISSAU', 'GYGEO': 'GEORGETOWN', 'HKHKG': 'HONG KONG', 'HNPCA': 'PUERTO CASTILLA', 'HNPCR': 'PUERTO CORTES', 'HNRTB': 'ROATAN', 'HNSLO': 'SAN LORENZO', 'HRDBV': 'DUBROVNIK', 'HRPLE': 'PLOCE', 'HRRJK': 'RIJEKA', 'HRSPU': 'SPLIT', 'HRZAD': 'ZADAR', 'HTGVS': 'GONAIVES', 'HTLAB': 'LABADIE', 'HTPAP': 'PORT AU PRINCE', 'IDBDJ': 'BANJARMASIN', 'IDBLW': 'BELAWAN, SUMATRA', 'IDBOA': 'BENOA, BALI', 'IDBPN': 'BALIKPAPAN, KALIMANTAN', 'IDBTM': 'BATAM ISLAND', 'IDDJB': 'JAMBI, SUMATRA', 'IDJKT': 'JAKARTA, JAVA', 'IDMAK': 'MAKASSAR', 'IDMAL': 'MANGOLE', 'IDPDG': 'PADANG', 'IDPER': 'PERAWANG', 'IDPLM': 'PALEMBANG, SUMATRA', 'IDPNJ': 'PANJANG', 'IDPNK': 'PONTIANAK, KALIMANTAN', 'IDPWG': 'PERAWANG, SUMATRA', 'IDSRG': 'SEMARANG', 'IDSUB': 'SURABAYA', 'IDTAB': 'TABONEO', 'IDTBA': 'TANJUNG BARA, KL', 'IDUPG': 'UJUNG PANDANG, SULAWESI', 'IEDLG': 'DUN LAOGHAIRE', 'IEDUB': 'DUBLIN', 'IEGRE': 'GREENCASTLE', 'IEORK': 'CORK', 'IEWAT': 'WATERFORD', 'ILASH': 'ASHDOD', 'ILETH': 'ELAT (EILATH)', 'ILHFA': 'HAIFA', 'INALA': 'ALANG SBY', 'INBHU': 'BHAVNAGAR', 'INBOM': 'MUMBAI', 'INCCU': 'KOLKATA', 'INCOK': 'COCHIN', 'INENR': 'ENNORE', 'INGGV': 'GANGAVARAM', 'INHAL': 'HALDIA', 'INHZA': 'HAZIRA PORT/SURAT', 'INIXY': 'KANDLA', 'INJGD': 'JAIGAD', 'INKAK': 'KAKINADA', 'INKAT': 'KATTUPALLI', 'INKRI': 'KRISHNAPATNAM', 'INMAA': 'CHENNAI', 'INMRM': 'MARMUGAO (MARMAGAO)', 'INMUN': 'MUNDRA', 'INNML': 'NEW MANGALORE', 'INNSA': 'NHAVA SHEVA', 'INNYY': '(OLD) VIZHINJAM INTERNATIONAL SEA PORT', 'INPAV': 'PIPAVAV (VICTOR) PORT', 'INPRT': 'PARADIP GARH', 'INTRV': 'VIZHINJAM INTERNATIONAL SEA PORT', 'INTUN': 'TUNA', 'INTUT': 'TUTICORIN', 'INVTZ': 'VISAKHAPATNAM', 'IQUQR': 'UMM QASR PT', 'ISAKU': 'AKUREYRI', 'ISISA': 'ISAFJORDUR - HOFN', 'ISREY': 'REYKJAVIK', 'ITAHO': 'ALGHERO', 'ITAOI': 'ANCONA', 'ITAUG': 'AUGUSTA PORT OF CATANIA', 'ITBDS': 'BRINDISI', 'ITBRI': 'BARI', 'ITCAG': 'CAGLIARI', 'ITCTA': 'CATANIA', 'ITCVV': 'CIVITAVECCHIA', 'ITGIT': 'GIOIA TAURO', 'ITGOA': 'GENOA', 'ITISS': 'ISOLA SANTO STEFANO', 'ITLIV': 'LEGHORN', 'ITMNF': 'MONFALCONE', 'ITMSN': 'MESSINA', 'ITNAP': 'NAPLES', 'ITOLB': 'OLBIA', 'ITPAL': 'PALAZZOLO DELLO STELLA', 'ITPMA': 'MARGHERA', 'ITPMO': 'PALERMO', 'ITPPL': 'PORTOPALO', 'ITPTF': 'PORTOFINO', 'ITPZL': 'POZZALLO', 'ITQSS': 'SASSARI', 'ITRAN': 'RAVENNA', 'ITRRO': 'SORRENTO', 'ITSAL': 'SALERNO', 'ITSIR': 'SIRACUSA', 'ITSPE': 'LA SPEZIA', 'ITSVN': 'SAVONA', 'ITTAR': 'TARANTO', 'ITTPS': 'TRAPANI', 'ITTRS': 'TRIESTE', 'ITVCE': 'VENICE', 'ITVDL': 'VADO LIGURE', 'JMFMH': 'FALMOUTH', 'JMKIN': 'KINGSTON', 'JMMBJ': 'MONTEGO BAY', 'JMOCJ': 'OCHO RIOS', 'JOAQJ': "AL 'AQABAH", 'JPABU': 'ABURATSU', 'JPAOJ': 'AOMORI', 'JPAXT': 'AKITA', 'JPBEP': 'BEPPU, SHIMANE', 'JPCHB': 'CHIBA', 'JPFKY': 'FUKUYAMA, HIROSHIMA', 'JPFUK': 'FUKUOKA', 'JPHBK': 'HIBIKISHINKO', 'JPHHE': 'HACHINOHE, AOMORI', 'JPHIC': 'HITACHINAKA', 'JPHIJ': 'HIROSHIMA', 'JPHIM': 'HIMEJI', 'JPHKD': 'HAKODATE', 'JPHKT': 'HAKATA, FUKUOKA', 'JPHMD': 'HAMADA', 'JPHSM': 'HOSOSHIMA', 'JPIMB': 'IMABARI', 'JPIMI': 'IMARI', 'JPISI': 'ISHIKARI', 'JPIWK': 'IWAKUNI', 'JPIYM': 'IYOMISHIMA', 'JPKCZ': 'KOCHI', 'JPKIJ': 'NIIGATA', 'JPKIS': 'KAMAISHI', 'JPKMJ': 'KUMAMOTO', 'JPKNZ': 'KANAZAWA', 'JPKOJ': 'KAGOSHIMA', 'JPKRE': 'KURE, HIROSHIMA', 'JPKSM': 'KASHIMA, IBARAKI', 'JPKUH': 'KUSHIRO', 'JPKWS': 'KAWASAKI', 'JPMAI': 'MAIZURU', 'JPMII': 'MIIKE, FUKUOKA', 'JPMIZ': 'MIZUSHIMA', 'JPMOJ': 'MOJI/KITAKYUSHU', 'JPMUR': 'MURORAN', 'JPMYJ': 'MATSUYAMA', 'JPMYK': 'MIYAKO, IWATE', 'JPNAH': 'NAHA, OKINAWA', 'JPNAN': 'NAKANOSEKI', 'JPNAO': 'NAOETSU', 'JPNGO': 'NAGOYA', 'JPNGS': 'NAGASAKI', 'JPOFT': 'OHFUNATO', 'JPOIT': 'OITA', 'JPOMZ': 'OMAEZAKI', 'JPONA': 'ONAHAMA', 'JPOSA': 'OSAKA', 'JPOTK': 'OTAKE', 'JPSBS': 'SHIBUSHI', 'JPSDJ': 'SENDAI, MIYAGI', 'JPSHS': 'SHIMONOSEKI', 'JPSKT': 'SAKATA', 'JPSMN': 'SAKAIMINATO', 'JPSMZ': 'SHIMIZU', 'JPSTS': 'SATSUMASENDAI', 'JPTAK': 'TAKAMATSU', 'JPTHS': 'TOYOHASHI', 'JPTKS': 'TOKUSHIMA', 'JPTKY': 'TOKUYAMA', 'JPTMK': 'TOMAKOMAI', 'JPTOS': 'TOYAMASHINKO', 'JPTRG': 'TSURUGA', 'JPTYO': 'TOKYO', 'JPUBJ': 'UBE', 'JPUKB': 'KOBE', 'JPWAK': 'WAKAYAMA', 'JPYAT': 'YATSUSHIRO', 'JPYKK': 'YOKKAICHI', 'JPYOK': 'YOKOHAMA', 'KEEMB': 'EMBAKASI', 'KEMBA': 'MOMBASA', 'KHKOS': 'KAMPONG SAOM (SIHANOUKVILLE)', 'KHPNH': 'PHNOM PENH', 'KMMUT': 'MUTSAMUDU', 'KMYVA': 'MORONI', 'KNBAS': 'BASSETERRE, ST KITTS', 'KNNEV': 'NEVIS', 'KRGSO': 'GOSEONG-GUN', 'KRINC': 'INCHEON', 'KRKAG': 'GANGNEUNG', 'KRKAN': 'GWANGYANG', 'KRKPO': 'POHANG', 'KRMOK': 'MOKPO', 'KROKP': 'OKPO/GEOJE', 'KRPTK': 'PYEONGTAEK', 'KRPUS': 'BUSAN', 'KRSCP': 'SAMCHEONPO/SACHEON', 'KRSPO': 'SEOGWIPO', 'KRTJI': 'DANGJIN', 'KRTYG': 'TONGYEONG', 'KRUSN': 'ULSAN', 'KRYOS': 'YEOSU', 'KWSAA': 'SHUAIBA', 'KWSWK': 'SHUWAIKH', 'KZALA': 'ALMATY', 'LBBEY': 'BEIRUT', 'LCCAS': 'CASTRIES', 'LCSLU': 'ST LUCIA APT', 'LKCMB': 'COLOMBO', 'LKGAL': 'GALLE', 'LKHBA': 'HAMBANTOTA', 'LKTRR': 'TRINCOMALEE', 'LRMLW': 'MONROVIA', 'LTKLJ': 'KLAIPEDA', 'LVRIX': 'RIGA', 'LYBEN': 'BINGAZI', 'LYKHO': 'KHOMS', 'LYMRA': 'MISURATA', 'LYTIP': 'TRIPOLI', 'MAAGA': 'AGADIR', 'MACAS': 'CASABLANCA', 'MANDR': 'NADOR', 'MAPTM': 'TANGER MED', 'MCMCM': 'MONTE-CARLO', 'MDGIU': 'GIURGIULESTI', 'MEBAR': 'BAR', 'MEBIJ': 'BIJELA', 'MEKOT': 'KOTOR', 'MGDIE': 'DIEGO SUAREZ', 'MGEHL': 'EHOALA (TOLAGNARO)', 'MGFTU': 'FORT DAUPHIN (TOALAGNARO)', 'MGMJN': 'MAJUNGA', 'MGNOS': 'NOSY-BE', 'MGSMS': 'SAINTE MARIE', 'MGTLE': 'TULEAR', 'MGTMM': 'TAMATAVE', 'MGVOH': 'VOHEMAR', 'MGWVK': 'MANAKARA', 'MMRGN': 'YANGON', 'MOMFM': 'MACAU', 'MQFDF': 'FORT-DE-FRANCE', 'MRNDB': 'NOUADHIBOU', 'MRNKC': 'NOUAKCHOTT', 'MSLTB': 'LITTLE BAY', 'MSPLY': 'PLYMOUTH', 'MTMAR': 'MARSAXLOKK', 'MTMLA': 'VALLETTA', 'MUPLU': 'PORT LOUIS', 'MVMLE': 'MALE', 'MXATM': 'ALTAMIRA', 'MXCOM': 'COSTA MAYA', 'MXCZM': 'COZUMEL', 'MXESE': 'ENSENADA', 'MXGYM': 'GUAYMAS', 'MXLZC': 'LAZARO CARDENAS', 'MXMZT': 'MAZATLAN', 'MXPGO': 'PROGRESO', 'MXPMS': 'PUERTO MORELOS', 'MXTAM': 'TAMPICO', 'MXTUY': 'TULUM', 'MXVER': 'VERACRUZ', 'MXZLO': 'MANZANILLO', 'MYBKI': 'KOTA KINABALU, SABAH', 'MYBTU': 'BINTULU, SARAWAK', 'MYKCH': 'KUCHING, SARAWAK', 'MYKUA': 'KUANTAN', 'MYLBU': 'LABUAN, SABAH', 'MYLGK': 'LANGKAWI', 'MYMKZ': 'MALACCA', 'MYMYY': 'MIRI, SARAWAK', 'MYPEN': 'PENANG', 'MYPGU': 'PASIR GUDANG, JOHOR', 'MYPKG': 'PORT KLANG (PELABUHAN KLANG)', 'MYSBW': 'SIBU, SARAWAK', 'MYSDK': 'SANDAKAN, SABAH', 'MYTPP': 'TANJUNG PELEPAS', 'MYTWU': 'TAWAU, SABAH', 'MZBEW': 'BEIRA', 'MZBZB': 'BAZARUTO ISLAND', 'MZMNC': 'NACALA', 'MZMPM': 'MAPUTO', 'MZMSG': 'MASSINGA', 'MZPOL': 'PEMBA', 'MZUEL': 'QUELIMANE', 'NALUD': 'LUDERITZ', 'NAWVB': 'WALVIS BAY', 'NCNOU': 'NOUMEA', 'NCVAV': 'VAVOUTO', 'NGAPP': 'APAPA', 'NGLKK': 'LEKKI', 'NGONN': 'ONNE', 'NGPHC': 'PORT HARCOURT', 'NGTIN': 'TINCAN/LAGOS', 'NICIO': 'CORINTO', 'NIMGA': 'MANAGUA', 'NLAMS': 'AMSTERDAM', 'NLFLU': 'FLUSHING', 'NLHRV': 'HEERENVEEN', 'NLIJM': 'IJMUIDEN', 'NLMOE': 'MOERDIJK', 'NLRTM': 'ROTTERDAM', 'NLVLI': 'VLISSINGEN', 'NOAES': 'ALESUND', 'NOALF': 'ALTA', 'NOALS': 'ALSTAHAUG', 'NOASV': 'AUSTEVOLL', 'NOBGO': 'BERGEN', 'NOBVK': 'BREVIK', 'NOEDF': 'EIDFJORD', 'NOEGE': 'EGERSUND', 'NOFLA': 'FLAM', 'NOFRK': 'FREDRIKSTAD', 'NOFRO': 'FLORO', 'NOGJM': 'GJEMNES', 'NOGNR': 'GEIRANGER', 'NOHAL': 'HALDEN', 'NOHAU': 'HAUGESUND', 'NOHOG': 'HOGSET', 'NOHVG': 'HONNINGSVAG', 'NOIKR': 'IKORNNES', 'NOKMY': 'KARMOY', 'NOKRS': 'KRISTIANSAND', 'NOKSU': 'KRISTIANSUND', 'NOKVD': 'KVINESDAL', 'NOLAR': 'LARVIK', 'NOLEK': 'LEIKANGER', 'NOLKN': 'LEKNES', 'NOLYR': 'LONGYEARBYEN', 'NOMAY': 'MALOY', 'NOMOL': 'MOLDE', 'NOMSS': 'MOSS', 'NONVK': 'NARVIK', 'NOOLD': 'OLDEN', 'NOORK': 'ORKANGER', 'NOOSL': 'OSLO', 'NOSAT': 'SALTEN', 'NOSAU': 'SAUDA', 'NOSUN': 'SUNNDALSORA', 'NOSVE': 'SVELGEN', 'NOSVG': 'STAVANGER', 'NOTAE': 'TANANGER', 'NOTOS': 'TROMSO', 'NOTRD': 'TRONDHEIM', 'NZAKL': 'AUCKLAND', 'NZBLU': 'BLUFF', 'NZCHC': 'CHRISTCHURCH', 'NZDUD': 'DUNEDIN', 'NZLYT': 'LYTTELTON', 'NZMAP': 'MARSDEN POINT', 'NZNPE': 'NAPIER', 'NZNSN': 'NELSON', 'NZPOE': 'PORT CHALMERS', 'NZTIU': 'TIMARU', 'NZTRG': 'TAURANGA', 'NZWLG': 'WELLINGTON', 'OMDQM': 'DUQM', 'OMKHS': 'KHASAB', 'OMMCT': 'MUSCAT', 'OMSLL': 'SALALAH', 'OMSOH': 'SOHAR', 'PABLB': 'BALBOA', 'PACTB': 'CRISTOBAL', 'PAMIT': 'MANZANILLO', 'PAONX': 'COLON', 'PAPAM': 'ALMIRANTE', 'PAPTY': 'PANAMA', 'PAROD': 'RODMAN', 'PECLL': 'CALLAO', 'PEPAI': 'PAITA', 'PEPIO': 'PISCO', 'PESVY': 'SALAVERRY', 'PFBOB': 'BORA-BORA', 'PFMOZ': 'MOOREA', 'PFPPT': 'PAPEETE', 'PGGUR': 'ALOTAU', 'PGLAE': 'LAE', 'PGLSA': 'LOSUIA', 'PGPOM': 'PORT MORESBY', 'PGRAB': 'RABAUL', 'PHBTG': 'BATANGAS, LUZON', 'PHCEB': 'CEBU', 'PHCGY': 'CAGAYAN DE ORO, MINDANAO', 'PHDVO': 'DAVAO, MINDANAO', 'PHGES': 'GENERAL SANTOS', 'PHMNN': 'MANILA NORTH HARBOUR', 'PHMNS': 'MANILA SOUTH HARBOUR', 'PHSFS': 'SUBIC', 'PKBQM': 'KARACHI-MUHAMMAD BIN QASIM', 'PKKHI': 'KARACHI', 'PLGDN': 'GDANSK', 'PLGDY': 'GDYNIA', 'PLSWI': 'SWINOUJSCIE', 'PLSZZ': 'SZCZECIN', 'PNPCN': 'PITCAIRN IS', 'PRSJU': 'SAN JUAN', 'PTAVE': 'AVEIRO', 'PTFDF': 'FIGUEIRA DA FOZ', 'PTFNC': 'FUNCHAL, MADEIRA', 'PTLEI': 'LEIXOES', 'PTLIS': 'LISBOA', 'PTPDL': 'PONTA DELGADA', 'PTPRM': 'PORTIMAO', 'PTSET': 'SETUBAL', 'PTSIE': 'SINES', 'PTSSB': 'SESIMBRA', 'PTTER': 'TERCEIRA ISLAND', 'PWROR': 'KOROR', 'PYBCM': 'CAACUPEMI ASUNCION', 'PYENO': 'ENCARNACION PUERTO SAN JUAN', 'PYPIL': 'CAACUPEMI PILAR', 'PYTVT': 'TERPORT VILLETA', 'PYVLL': 'PUERTO SEGURO FLUVIAL (VILLETA)', 'QADOH': 'DOHA', 'QAHMD': 'HAMAD', 'QAMES': 'MESAIEED', 'QARLF': 'RAS LAFFAN', 'REPDG': 'POINTE DES GALETS', 'REPOS': 'POSSESSION', 'ROAGI': 'AGIGEA', 'ROCND': 'CONSTANTA', 'ROGAL': 'GALATI', 'ROMAG': 'MANGALIA', 'RUARH': 'ARKHANGELSK', 'RUBLT': 'BALTIYSK', 'RUKDT': 'KRONSHTADT', 'RUKZP': 'KAVKAZ', 'RULED': 'SAINT PETERSBURG', 'RUNJK': 'NAKHODKA', 'RUNVS': 'NOVOROSSIYSK', 'RUPKC': 'PETROPAVLOVSK-KAMCHATSKIY', 'RUSKA': 'SLAVYANKA', 'RUSOC': 'SOCHI', 'RUULU': "UST'-LUGA", 'RUVVO': 'VLADIVOSTOK', 'RUVYP': 'VOSTOCHNIY, PORT', 'RUZAR': 'ZARUBINO', 'SADMM': 'AD DAMMAM', 'SAJED': 'JEDDAH', 'SAJUB': 'JUBAIL', 'SAKAC': 'KING ABDULLAH PORT', 'SANEO': 'NEOM', 'SAYNB': 'YANBU AL-BAHR', 'SBHIR': 'HONIARA, GUADALCANAL IS', 'SCPOV': 'PORT VICTORIA', 'SCVIC': 'VICTORIA', 'SDPZU': 'PORT SUDAN', 'SEAHU': 'AHUS', 'SEGOT': 'GOTEBORG', 'SEGVX': 'GAVLE', 'SEHAD': 'HALMSTAD', 'SEHEL': 'HELSINGBORG', 'SEKAN': 'KARLSHAMN', 'SENRK': 'NORRKOPING', 'SENYN': 'NYNASHAMN', 'SEPIT': 'PITEA', 'SESFT': 'SKELLEFTEA', 'SESKM': 'SKARHAMN', 'SESOE': 'SODERTALJE', 'SESTO': 'STOCKHOLM', 'SEVBY': 'VISBY', 'SGSIN': 'SINGAPORE', 'SHSHN': 'JAMESTOWN', 'SIKOP': 'KOPER', 'SLFNA': 'FREETOWN', 'SNDKR': 'DAKAR', 'SNZIG': 'ZIGUINCHOR', 'SOBBO': 'BERBERA', 'SOKMU': 'KISMAYU', 'SOMGQ': 'MOGADISHU', 'SRPBM': 'PARAMARIBO', 'SVAQJ': 'ACAJUTLA', 'SXPHI': 'PHILIPSBURG', 'SYLTK': 'LATTAKIA', 'SYTTS': 'TARTUS', 'TCGDT': 'GRAND TURK ISLAND', 'TCPLS': 'PROVIDENCIALES', 'TGLFW': 'LOME', 'THBKK': 'BANGKOK', 'THBMT': 'BANGKOK MODERN TERMINALS/BANGKOK', 'THHKT': 'PHUKET', 'THLCH': 'LAEM CHABANG', 'THLKR': 'LAT KRABANG', 'THPAT': 'PAT BANGKOK', 'THSBP': 'SIAM BANGKOK PORT', 'THSGZ': 'SONGKHLA', 'THTPT': 'THAI CONNECTIVITY TERMINAL', 'THUSM': 'KOH SAMUI', 'TLDIL': 'DILI', 'TNLGN': 'LA GOULETTE NORD (HALQUELOUED)', 'TNRDS': 'RADES/TUNIS', 'TNSFA': 'SFAX', 'TNSUS': 'SOUSSE', 'TNTUN': 'TUNIS', 'TOTBU': "NUKU'ALOFA", 'TRALA': 'ALANYA', 'TRALI': 'ALIAGA', 'TRAVC': 'AVCILAR', 'TRAYT': 'ANTALYA', 'TRBDM': 'BANDIRMA', 'TRBTS': 'BESIKTAS', 'TRBXN': 'BODRUM', 'TRBZC': 'BOZCAADA', 'TRCKZ': 'CANAKKALE', 'TRDRC': 'DERINCE', 'TREYP': 'EVYAP PORT', 'TRGEB': 'GEBZE', 'TRGEM': 'GEMLIK', 'TRGIR': 'GIRESUN', 'TRISK': 'ISKENDERUN', 'TRIST': 'ISTANBUL', 'TRITY': 'ISTINYE/BOSPHORUS', 'TRIZM': 'IZMIR', 'TRLMA': 'LIMAS', 'TRMER': 'MERSIN', 'TRMRM': 'MARMARIS', 'TRSSX': 'SAMSUN', 'TRTEK': 'TEKIRDAG (ASYAPORT)', 'TRTUZ': 'TUZLA', 'TRTZX': 'TRABZON', 'TRYAL': 'YALOVA', 'TRYAR': 'YARIMCA', 'TRZON': 'ZONGULDAK', 'TTPOS': 'PORT-OF-SPAIN', 'TTPTS': 'POINT LISAS', 'TTSCA': 'SCARBOROUGH/TOBAGO', 'TVFUN': 'FUNAFUTI', 'TWKEL': 'KEELUNG', 'TWKHH': 'KAOHSIUNG', 'TWTPE': 'TAIPEI', 'TWTXG': 'TAICHUNG', 'TZDAR': 'DAR ES SALAAM', 'TZMYW': 'MTWARA', 'TZTGT': 'TANGA', 'TZZNZ': 'ZANZIBAR', 'UAILK': 'CHORNOMORSK', 'UAIZM': 'IZMAIL', 'UAODS': 'ODESA', 'UARNI': 'RENI', 'UAYAL': 'YALTA', 'UAYUZ': 'YUZHNYY', 'USBAL': 'BALTIMORE', 'USBHB': 'BAR HARBOR', 'USBOS': 'BOSTON', 'USBRO': 'BROWNSVILLE', 'USCHS': 'CHARLESTON', 'USCLM': 'PT ANGELES', 'USCPV': 'CAPE CANAVERAL', 'USDUT': 'DUTCH HARBOR', 'USDVV': 'DAVISVILLE', 'USEVE': 'ELLISVILLE', 'USEWR': 'NEWARK', 'USEYW': 'KEY WEST', 'USFLL': 'FORT LAUDERDALE', 'USGPT': 'GULFPORT', 'USHNL': 'HONOLULU', 'USHOU': 'HOUSTON', 'USILG': 'WILMINGTON, DE', 'USILM': 'WILMINGTON, NC', 'USITO': 'HILO', 'USJAX': 'JACKSONVILLE', 'USKWH': 'KAWAIHAE', 'USLAX': 'LOS ANGELES', 'USLGB': 'LONG BEACH', 'USMIA': 'MIAMI', 'USMOB': 'MOBILE', 'USMSY': 'NEW ORLEANS', 'USNIJ': 'NAWILIWILI', 'USNPO': 'NEWPORT', 'USNTD': 'PORT HUENEME', 'USNYC': 'NEW YORK', 'USOAK': 'OAKLAND', 'USORF': 'NORFOLK', 'USPDX': 'PORTLAND, OR', 'USPEF': 'PORT EVERGLADES', 'USPHL': 'PHILADELPHIA', 'USPTM': 'PORTSMOUTH', 'USPWM': 'PORTLAND, ME', 'USSAV': 'SAVANNAH', 'USSEA': 'SEATTLE', 'USSFO': 'SAN FRANCISCO', 'USTIW': 'TACOMA', 'USTPA': 'TAMPA', 'USUAA': 'UNALASKA', 'UYMVD': 'MONTEVIDEO', 'UYNVP': 'NUEVA PALMIRA', 'UYPDP': 'PUNTA DEL ESTE', 'VCCRP': 'CAMPDEN PARK', 'VCKTN': 'KINGSTOWN, ST VINCENT', 'VEETV': 'EL TABLAZO/MARACAIBO L', 'VEGUB': 'GUARANAO BAY', 'VELAG': 'LA GUAIRA', 'VEPBL': 'PUERTO CABELLO', 'VEPCZ': 'PUERTO LA CRUZ', 'VGNSX': 'N. SOUND/VIRGIN GORDA', 'VGRAD': 'ROAD TOWN, TORTOLA', 'VICHA': 'CHARLOTTE AMALIE, ST THOMAS', 'VICTD': 'CHRISTIANSTED, SAINT CROIX', 'VISTT': 'SAINT THOMAS', 'VNDAD': 'DA-NANG', 'VNDNA': 'DONG NAI', 'VNHPH': 'HAIPHONG', 'VNNHA': 'NHA TRANG', 'VNPHG': 'PHUOC LONG', 'VNSGN': 'HO CHI MINH CITY', 'VNUIH': 'QUINHON', 'VNVUT': 'VUNG TAU', 'VUVLI': 'PORT VILA', 'WSAPW': 'APIA', 'YEADE': 'ADEN', 'YEHOD': 'HODEIDAH', 'YEMKX': 'MUKALLA', 'YTLON': 'LONGONI', 'ZACPT': 'CAPE TOWN', 'ZADUR': 'DURBAN', 'ZAELS': 'EAST LONDON', 'ZAMZY': 'MOSSEL BAY', 'ZAPLZ': 'PORT ELIZABETH', 'ZARCB': 'RICHARDS BAY', 'ZAZBA': 'COEGA'}
         
         # 설정 파일 찾기 및 로드
         self.find_and_load_config_files()
@@ -145,6 +145,7 @@ class ContainerConverter:
         self.stowage_tab = ttk.Frame(self.tab_control)
         self.tpsz_tab = ttk.Frame(self.tab_control)
         self.edi_tab = ttk.Frame(self.tab_control)  # EDI PARSER 탭 추가
+        self.asc_parser_tab = ttk.Frame(self.tab_control)  # ASC Parser 탭 추가
         
         # 탭 추가
         self.tab_control.add(self.single_tab, text='단일 CLL 변환')
@@ -153,6 +154,7 @@ class ContainerConverter:
         self.tab_control.add(self.stowage_tab, text='STOWAGE CODE 관리')
         self.tab_control.add(self.tpsz_tab, text='TpSZ 관리')
         self.tab_control.add(self.edi_tab, text='EDI PARSER')  # EDI PARSER 탭 추가
+        self.tab_control.add(self.asc_parser_tab, text='ASC Parser')  # ASC Parser 탭 추가
         
         # 각 탭 설정
         self.setup_single_tab()
@@ -161,6 +163,7 @@ class ContainerConverter:
         self.setup_stowage_tab()
         self.setup_tpsz_tab()
         self.setup_edi_tab()  # EDI PARSER 탭 설정 메서드 호출
+        self.setup_asc_parser_tab()  # ASC Parser 탭 설정 메서드 호출
         
         # JSON 파일 내용 표시
         self.update_stowage_preview()  # Stowage 탭 업데이트
@@ -2625,6 +2628,277 @@ class ContainerConverter:
         except Exception as e:
             print(f"Error processing EDI file: {str(e)}")
             messagebox.showerror("오류", f"EDI 파일 처리 중 오류가 발생했습니다: {str(e)}")
+
+    def setup_asc_parser_tab(self):
+        """ASC Parser 탭 설정"""
+        # 좌우 분할을 위한 프레임
+        left_frame = ttk.Frame(self.asc_parser_tab)
+        right_frame = ttk.Frame(self.asc_parser_tab)
+        left_frame.pack(side="left", fill="both", expand=True, padx=5)
+        right_frame.pack(side="right", fill="both", expand=True, padx=5)
+
+        # 왼쪽: ASC 파일 드래그 앤 드롭 영역
+        drop_frame = ttk.LabelFrame(left_frame, text="Drag and Drop ASC File")
+        drop_frame.pack(fill='both', expand=True, padx=5, pady=5)
+
+        # 드롭 영역 레이블
+        self.asc_drop_label = ttk.Label(drop_frame, text="Drop ASC file here", relief="solid", padding=20)
+        self.asc_drop_label.pack(fill='both', expand=True, padx=5, pady=5)
+
+        # 드래그 앤 드롭 바인딩
+        self.asc_drop_label.drop_target_register(DND_FILES)
+        self.asc_drop_label.dnd_bind('<<Drop>>', self.drop_asc_file)
+
+        # 상태 표시 레이블
+        self.asc_status_label = ttk.Label(left_frame, text="")
+        self.asc_status_label.pack(fill='x', padx=5, pady=5)
+
+        # 오른쪽: 요약 정보 표시 영역
+        summary_frame = ttk.LabelFrame(right_frame, text="ASC File Summary")
+        summary_frame.pack(fill='both', expand=True, padx=5, pady=5)
+
+        # 요약 정보를 표시할 텍스트 영역
+        self.asc_summary_text = tk.Text(summary_frame, wrap=tk.WORD, width=40, height=20)
+        self.asc_summary_text.pack(fill='both', expand=True, padx=5, pady=5)
+
+        # 스크롤바 추가
+        scrollbar = ttk.Scrollbar(summary_frame, orient="vertical", command=self.asc_summary_text.yview)
+        scrollbar.pack(side="right", fill="y")
+        self.asc_summary_text.config(yscrollcommand=scrollbar.set)
+
+    def drop_asc_file(self, event):
+        file_path = event.data
+        # Windows 경로에서 따옴표 제거
+        file_path = file_path.strip('{}')
+        
+        if not file_path.lower().endswith('.asc'):
+            messagebox.showerror("Error", "Please drop an ASC file")
+            return
+
+        try:
+            self.process_asc_file(file_path)
+        except Exception as e:
+            messagebox.showerror("Error", f"Error processing ASC file: {str(e)}")
+
+    def process_asc_file(self, file_path):
+        try:
+            # 클래스 변수 초기화
+            self.OH = "0"
+            self.Oleft = "0"
+            self.Oright = "0"
+            
+            # ASC 파일 읽기
+            with open(file_path, 'r', encoding='utf-8') as file:
+                lines = file.readlines()
+
+            # 헤더 정보 파싱 (첫 번째 줄)
+            header = lines[0].strip()
+            header_parts = header.split('/')
+            
+            # 헤더에서 정보 추출
+            vessel = ""
+            voy = ""
+            port = ""
+            formatted_date_time = ""
+            
+            # 헤더 파싱
+            for part in header_parts:
+                part = part.strip()
+                if "MSC" in part:  # vessel name
+                    vessel = part
+                elif "FT" in part:  # voyage
+                    voy = part.strip()
+                elif "POD:" in part:  # port
+                    port = part.split(":")[1]
+                elif len(part) == 8 and part.isdigit():  # date
+                    date_str = part
+                    formatted_date_time = f"{date_str[6:8]}.{date_str[4:6]}.{date_str[:4]}"
+            
+            # 엑셀 워크북 생성
+            wb = openpyxl.Workbook()
+            ws = wb.active
+            ws.title = "Sheet1"
+
+            # 기본 폰트 및 정렬 설정
+            default_font = Font(name='Arial', size=10)
+            default_alignment = Alignment(horizontal='left', vertical='center')
+            
+            # 기본 열 너비 설정
+            for column in range(1, 26):  # A to Y
+                ws.column_dimensions[utils.get_column_letter(column)].width = 12
+
+            # 헤더 설정 (6번째 행)
+            headers = ["POD", "CELL", "Cntr No.", "OPR", "POL", "STOW", "FPOD", "POR", 
+                      "TpSz", "WGT", "F/E", "SP", "Temp", "DG", "UNNO", "PG", "FP",
+                      "PrePos", "ACC.", "RSN", "Over Dimension", "Over Slot", "Remark",
+                      "Void.Calc", "Void.Calc"]
+            
+            for col, header in enumerate(headers, 1):
+                ws.cell(row=6, column=col, value=header)
+
+            # 변수 초기화
+            cntr_count = 6
+            
+            # ASC 데이터 파싱 (세 번째 줄부터)
+            for line in lines[2:]:  # Skip header and PORT ROTATION line
+                if line.strip() and not line.startswith('$'):  # Skip empty lines and header lines
+                    parts = line.strip().split()
+                    if len(parts) >= 4:  # 최소 필요한 필드 수 확인
+                        cntr_count += 1
+                        
+                        # 기본 정보 추출
+                        cell = parts[0]  # CELL
+                        container_no = parts[1]  # Container No.
+                        
+                        # 복합 정보 파싱 (예: MSKTRISTISTPSE)
+                        info = parts[2]
+                        carrier = info[:3]  # MSK
+                        pod = info[3:8]  # TRIST
+                        pol = info[8:11] if len(info) >= 11 else ""  # PSE
+                        
+                        # 컨테이너 타입 및 무게 정보 파싱
+                        type_weight = parts[3]
+                        container_type = ""
+                        weight = ""
+                        fe_status = ""
+                        
+                        # 컨테이너 타입과 무게 추출 (예: PSEKWSAA40HC130F)
+                        for i in range(len(type_weight)):
+                            if type_weight[i:i+4] in ["20DV", "40HC", "40DV", "45HC"]:
+                                container_type = type_weight[i:i+4]
+                                # 무게와 F/E 상태 추출
+                                remaining = type_weight[i+4:]
+                                # 숫자만 추출하여 무게로
+                                weight = ''.join(c for c in remaining if c.isdigit())
+                                # 마지막 문자가 F 또는 E인 경우
+                                if remaining and remaining[-1] in ['F', 'E']:
+                                    fe_status = remaining[-1]
+                                break
+                        
+                        # 데이터 입력
+                        ws.cell(row=cntr_count, column=1, value=pod)  # POD
+                        ws.cell(row=cntr_count, column=2, value=cell)  # CELL
+                        ws.cell(row=cntr_count, column=3, value=container_no)  # Container No.
+                        ws.cell(row=cntr_count, column=4, value=carrier)  # OPR
+                        ws.cell(row=cntr_count, column=5, value=pol)  # POL
+                        ws.cell(row=cntr_count, column=9, value=container_type)  # TpSz
+                        
+                        # 무게 처리
+                        if weight:
+                            try:
+                                weight_value = float(weight)
+                                ws.cell(row=cntr_count, column=10, value=weight_value)  # WGT
+                                ws.cell(row=cntr_count, column=10).number_format = "0.0"
+                            except ValueError:
+                                ws.cell(row=cntr_count, column=10, value=0)
+                        
+                        ws.cell(row=cntr_count, column=11, value=fe_status)  # F/E
+            
+            # 상단 정보 추가
+            ws.cell(row=1, column=1, value="                                                               Inquary Summary(Detail Information)")
+            ws.cell(row=2, column=1, value=f"Vessel Name : {vessel}                                                                                                   Data : {formatted_date_time}")
+            ws.cell(row=3, column=1, value=f"Voyage No : {voy}                                                                                                   Port : {port}")
+            ws.cell(row=4, column=1, value="Operator Code : ---")
+            
+            # POD 요약 생성
+            pod_summary = {}
+            pol_pod_summary = {}
+            for row in range(7, ws.max_row + 1):
+                pod = ws.cell(row=row, column=1).value
+                pol = ws.cell(row=row, column=5).value
+                
+                if pod and pod != "UNSET":
+                    pod_summary[pod] = pod_summary.get(pod, 0) + 1
+                    if pol == port:
+                        pol_pod_summary[pod] = pol_pod_summary.get(pod, 0) + 1
+
+            # 요약 정보 업데이트
+            self.update_asc_summary(pod_summary, pol_pod_summary, vessel, voy, port)
+
+            # 파일 저장
+            output_filename = f"{vessel} {voy} {port}.xlsx"
+            output_file = os.path.join(os.path.dirname(file_path), output_filename)
+            
+            if os.path.exists(output_file):
+                try:
+                    os.remove(output_file)
+                except PermissionError:
+                    messagebox.showerror("오류", "기존 파일이 열려있습니다. 파일을 닫고 다시 시도해주세요.")
+                    return
+
+            try:
+                wb.save(output_file)
+                if os.path.exists(output_file) and os.path.getsize(output_file) > 0:
+                    messagebox.showinfo("성공", f"ASC 파일이 성공적으로 변환되었습니다.\n저장 위치: {output_file}")
+                else:
+                    messagebox.showerror("오류", "파일이 올바르게 생성되지 않았습니다.")
+            except Exception as e:
+                messagebox.showerror("오류", f"파일 저장 중 오류가 발생했습니다: {str(e)}")
+            finally:
+                wb.close()
+
+        except Exception as e:
+            messagebox.showerror("오류", f"ASC 파일 처리 중 오류가 발생했습니다: {str(e)}")
+            print(f"Error processing ASC file: {str(e)}")  # 디버깅용
+
+    def update_asc_summary(self, pod_summary, pol_pod_summary, vessel, voy, port):
+        """ASC 파일 요약 정보 업데이트"""
+        # 텍스트 영역 초기화
+        self.asc_summary_text.delete(1.0, tk.END)
+        
+        # 색상 태그 설정 (배경색과 보색)
+        self.asc_summary_text.tag_configure("krpus", 
+            background="#90EE90",  # 연한 녹색 배경
+            foreground="#FF1493")  # 진한 분홍색 글자
+        
+        self.asc_summary_text.tag_configure("krkan", 
+            background="#FFD700",  # 골드 배경
+            foreground="#000080")  # 네이비 글자
+        
+        self.asc_summary_text.tag_configure("krinc", 
+            background="#87CEEB",  # 하늘색 배경
+            foreground="#FF4500")  # 주황색 글자
+        
+        # 선박 및 항차 정보 추가
+        self.asc_summary_text.insert(tk.END, f"Vessel:  {vessel}\n")
+        self.asc_summary_text.insert(tk.END, f"Voyage:  {voy}\n") 
+        self.asc_summary_text.insert(tk.END, f"Port:    {port}\n\n")
+        
+        # 전체 POD Summary 출력
+        self.asc_summary_text.insert(tk.END, "=== Total POD Summary ===\n\n")
+        
+        total_containers = 0
+        for pod, count in sorted(pod_summary.items()):  # POD 알파벳 순으로 정렬
+            # POD별로 다른 배경색과 글자색 적용
+            if pod == "KRPUS":
+                self.asc_summary_text.insert(tk.END, f"{pod}: {count}\n", "krpus")
+            elif pod == "KRKAN":
+                self.asc_summary_text.insert(tk.END, f"{pod}: {count}\n", "krkan")
+            elif pod == "KRINC":
+                self.asc_summary_text.insert(tk.END, f"{pod}: {count}\n", "krinc")
+            else:
+                self.asc_summary_text.insert(tk.END, f"{pod}: {count}\n")
+            total_containers += count
+        
+        self.asc_summary_text.insert(tk.END, f"\nTotal: {total_containers}\n\n")
+
+        # POL 기준 POD Summary 출력
+        self.asc_summary_text.insert(tk.END, f"=== POD Summary (From {port}) ===\n\n")
+        
+        pol_total_containers = 0
+        for pod, count in sorted(pol_pod_summary.items()):  # POD 알파벳 순으로 정렬
+            # POD별로 다른 배경색과 글자색 적용
+            if pod == "KRPUS":
+                self.asc_summary_text.insert(tk.END, f"{pod}: {count}\n", "krpus")
+            elif pod == "KRKAN":
+                self.asc_summary_text.insert(tk.END, f"{pod}: {count}\n", "krkan")
+            elif pod == "KRINC":
+                self.asc_summary_text.insert(tk.END, f"{pod}: {count}\n", "krinc")
+            else:
+                self.asc_summary_text.insert(tk.END, f"{pod}: {count}\n")
+            pol_total_containers += count
+        
+        self.asc_summary_text.insert(tk.END, f"\nTotal from {port}: {pol_total_containers}")
 
 
 
