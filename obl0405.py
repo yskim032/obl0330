@@ -144,7 +144,7 @@ class ContainerConverter:
         self.itps_tab = ttk.Frame(self.tab_control)
         self.stowage_tab = ttk.Frame(self.tab_control)
         self.tpsz_tab = ttk.Frame(self.tab_control)
-        self.edi_tab = ttk.Frame(self.tab_control)  # EDI PARSER 탭 추가
+        self.edi_tab = ttk.Frame(self.tab_control)
         self.asc_parser_tab = ttk.Frame(self.tab_control)  # ASC Parser 탭 추가
         
         # 탭 추가
@@ -153,7 +153,7 @@ class ContainerConverter:
         self.tab_control.add(self.itps_tab, text='ITPS 추가')
         self.tab_control.add(self.stowage_tab, text='STOWAGE CODE 관리')
         self.tab_control.add(self.tpsz_tab, text='TpSZ 관리')
-        self.tab_control.add(self.edi_tab, text='EDI PARSER')  # EDI PARSER 탭 추가
+        self.tab_control.add(self.edi_tab, text='EDI PARSER')
         self.tab_control.add(self.asc_parser_tab, text='ASC Parser')  # ASC Parser 탭 추가
         
         # 각 탭 설정
@@ -162,9 +162,9 @@ class ContainerConverter:
         self.setup_itps_tab()
         self.setup_stowage_tab()
         self.setup_tpsz_tab()
-        self.setup_edi_tab()  # EDI PARSER 탭 설정 메서드 호출
-        self.setup_asc_parser_tab()  # ASC Parser 탭 설정 메서드 호출
-        
+        self.setup_edi_tab()
+        self.setup_asc_parser_tab()  # ASC Parser 탭 설정
+
         # JSON 파일 내용 표시
         self.update_stowage_preview()  # Stowage 탭 업데이트
         self.update_tpsz_preview()     # TpSZ 탭 업데이트
@@ -172,10 +172,10 @@ class ContainerConverter:
     def setup_single_tab(self):
         # 단일 CLL 변환 탭 설정
         left_frame = ttk.Frame(self.single_tab)
-        left_frame.pack(side="left", fill="both", expand=True, padx=5)
+        left_frame.pack(side=tk.LEFT, fill="both", expand=True)
         
         right_frame = ttk.Frame(self.single_tab)
-        right_frame.pack(side="right", fill="both", padx=5)
+        right_frame.pack(side=tk.RIGHT, fill="both", expand=True)
         
         # POL, TOL 선택 프레임
         port_frame = ttk.LabelFrame(left_frame, text="POL TOL")
@@ -292,10 +292,10 @@ class ContainerConverter:
         """CLL 파일 병합 탭 설정"""
         # 좌우 분할
         left_frame = ttk.Frame(self.multi_cll_tab)
-        left_frame.pack(side="left", fill="both", expand=True, padx=5)
+        left_frame.pack(side=tk.LEFT, fill="both", expand=True)
         
         right_frame = ttk.Frame(self.multi_cll_tab)
-        right_frame.pack(side="right", fill="both", padx=5)
+        right_frame.pack(side=tk.RIGHT, fill="both", expand=True)
         
         # POL/TOL 선택 프레임
         port_frame = ttk.LabelFrame(left_frame, text="POL TOL")
@@ -384,10 +384,10 @@ class ContainerConverter:
         """ITPS 추가 탭 설정"""
         # 좌우 분할
         left_frame = ttk.Frame(self.itps_tab)
-        left_frame.pack(side="left", fill="both", expand=True, padx=5)
+        left_frame.pack(side=tk.LEFT, fill="both", expand=True)
         
         right_frame = ttk.Frame(self.itps_tab)
-        right_frame.pack(side="right", fill="both", padx=5)
+        right_frame.pack(side=tk.RIGHT, fill="both", expand=True)
 
         # 파일 정보 표시 영역
         info_frame = ttk.LabelFrame(left_frame, text="파일 정보")
@@ -436,8 +436,8 @@ class ContainerConverter:
         """STOWAGE CODE 관리 탭 설정"""
         # 메인 프레임
         main_frame = ttk.Frame(self.stowage_tab)
-        main_frame.pack(fill="both", expand=True, padx=10, pady=10)
-
+        main_frame.pack(fill="both", expand=True)
+        
         # 드래그 & 드롭 영역
         drop_frame = ttk.LabelFrame(main_frame, text="Stowage Code 엑셀 파일")
         drop_frame.pack(fill="x", pady=(0, 10))
@@ -1792,8 +1792,8 @@ class ContainerConverter:
         """TpSZ 관리 탭 설정"""
         # 메인 프레임
         main_frame = ttk.Frame(self.tpsz_tab)
-        main_frame.pack(fill="both", expand=True, padx=10, pady=10)
-
+        main_frame.pack(fill="both", expand=True)
+        
         # 드래그 & 드롭 영역
         drop_frame = ttk.LabelFrame(main_frame, text="TpSZ 엑셀 파일")
         drop_frame.pack(fill="x", pady=(0, 10))
@@ -1881,19 +1881,41 @@ class ContainerConverter:
         """POD 리스트와 일치하는 서비스 찾기"""
         matching_services = {}
         
+        print(f"Finding matching services for POD list: {pod_list}")  # 디버깅용
+        print(f"Available stow mappings: {self.stow_mapping}")  # 디버깅용
+        
+        # stow_mapping이 비어있는지 확인
+        if not self.stow_mapping:
+            print("Warning: stow_mapping is empty!")  # 디버깅용
+            messagebox.showwarning("경고", "Stow Code 매핑 정보가 없습니다. Stowage Code 관리 탭에서 매핑 정보를 추가해주세요.")
+            return matching_services
+        
         for service_name, mappings in self.stow_mapping.items():
+            print(f"Checking service: {service_name}")  # 디버깅용
             matches = []
             for pod in pod_list:
+                print(f"  Checking POD: {pod}")  # 디버깅용
                 for mapping in mappings:
-                    if pod.upper() == mapping['port'].upper() or pod.upper() == mapping['stow_code'].upper():
+                    print(f"    Comparing with mapping: {mapping}")  # 디버깅용
+                    if pod.upper() == mapping['port'].upper():
+                        print(f"      Found port match: {pod} = {mapping['port']}")  # 디버깅용
+                        matches.append({
+                            'pod': pod,
+                            'port': mapping['port'],
+                            'stow_code': mapping['stow_code']
+                        })
+                    elif pod.upper() == mapping['stow_code'].upper():
+                        print(f"      Found stow_code match: {pod} = {mapping['stow_code']}")  # 디버깅용
                         matches.append({
                             'pod': pod,
                             'port': mapping['port'],
                             'stow_code': mapping['stow_code']
                         })
             if matches:
+                print(f"  Found {len(matches)} matches for service {service_name}")  # 디버깅용
                 matching_services[service_name] = matches
         
+        print(f"Final matching services: {matching_services}")  # 디버깅용
         return matching_services
 
     def show_service_selection_dialog(self, matching_services):
@@ -2083,9 +2105,10 @@ class ContainerConverter:
         """EDI PARSER 탭 설정"""
         # 좌우 분할을 위한 프레임
         left_frame = ttk.Frame(self.edi_tab)
+        left_frame.pack(side=tk.LEFT, fill="both", expand=True)
+        
         right_frame = ttk.Frame(self.edi_tab)
-        left_frame.pack(side="left", fill="both", expand=True, padx=5)
-        right_frame.pack(side="right", fill="both", expand=True, padx=5)
+        right_frame.pack(side=tk.RIGHT, fill="both", expand=True)
 
         # 왼쪽: EDI 파일 드래그 앤 드롭 영역
         drop_frame = ttk.LabelFrame(left_frame, text="EDI 파일 드래그 앤 드롭")
@@ -2116,7 +2139,7 @@ class ContainerConverter:
 
         # POD 표시를 위한 프레임 추가
         pod_frame = ttk.LabelFrame(self.edi_tab, text="추출된 POD", padding="5")
-        pod_frame.pack(fill="x", padx=5, pady=5)
+        pod_frame.pack(fill="both", expand=True, pady=5)
         
         # POD 값을 표시할 레이블 추가
         self.pod_label = ttk.Label(pod_frame, text="EDI 파일을 드래그 앤 드롭하세요")
@@ -2546,48 +2569,89 @@ class ContainerConverter:
                     if len(parts) >= 3:
                         pod = parts[2][:5]  # 5자리만 추출
                         pod_values.add(pod)
-
+                        print(f"Extracted POD: {pod}")  # 디버깅용
+            
+            # POD 값들을 정렬하여 표시
+            sorted_pods = sorted(list(pod_values))
+            pod_text = "\n".join(sorted_pods)
+            self.pod_label.config(text=pod_text)
+            
             if pod_values:
-                pod_text = "\n".join(sorted(pod_values))  # 정렬된 고유값들을 세로로 나열
-
-            # matching_services_edi = self.find_matching_services(pod_values)
-            # selected_service_edi = self.show_service_selection_dialog(matching_services_edi)
-            # if selected_service_edi:
-            #     return
-            # service_mappings_edi = self.stow_mapping.get(selected_service_edi, [])
+                print(f"Found POD values: {pod_values}")  # 디버깅용
                 
-
-                # POD 선택을 위한 다이얼로그 클래스
-                class PodSelectionDialog(tk.Toplevel):
-                    def __init__(self, parent, pod_list):
-                        super().__init__(parent)
-                        self.title("POD 선택")
-                        self.selected_pods = []
-                        
-                        # POD 리스트박스
-                        self.listbox = tk.Listbox(self, selectmode=tk.MULTIPLE)
-                        for pod in sorted(pod_list):
-                            self.listbox.insert(tk.END, pod)
-                        self.listbox.pack(padx=10, pady=5)
-                        
-                        # 확인 버튼
-                        tk.Button(self, text="확인", command=self.on_confirm).pack(pady=5)
-                        
-                    def on_confirm(self):
-                        self.selected_pods = [self.listbox.get(i) for i in self.listbox.curselection()]
-                        self.destroy()
-
+                # 매칭되는 서비스 찾기
+                print(f"Calling find_matching_services with pod_values: {pod_values}")  # 디버깅용
+                matching_services = self.find_matching_services(pod_values)
+                
+                # 서비스 선택 다이얼로그 표시 (매칭되는 서비스가 없더라도 표시)
+                print("Calling show_service_selection_dialog")  # 디버깅용
+                
+                # 매칭되는 서비스가 없는 경우 빈 딕셔너리 대신 기본 서비스 추가
+                if not matching_services:
+                    print("No matching services found, adding default service")  # 디버깅용
+                    matching_services = {"기본 서비스": [{"pod": pod, "port": pod, "stow_code": pod} for pod in pod_values]}
+                
+                selected_service = self.show_service_selection_dialog(matching_services)
+                
+                if not selected_service:
+                    print("No service selected")  # 디버깅용
+                    return
+                
+                print(f"Selected service: {selected_service}")  # 디버깅용
+                
+                # 선택된 서비스의 매핑 가져오기
+                service_mappings = self.stow_mapping.get(selected_service, [])
+                print(f"Service mappings: {service_mappings}")  # 디버깅용
+                
+                # 엑셀 파일 다시 열기
+                wb = openpyxl.load_workbook(output_file)
+                ws = wb.active
+                
+                # 각 POD에 대해 매핑 적용
+                for row in range(7, ws.max_row + 1):
+                    pod = ws.cell(row=row, column=1).value  # POD는 1열(A열)에 있음
+                    if pod and pod != "UNSET":
+                        print(f"Processing POD: {pod}")  # 디버깅용
+                        # POD에 대한 매핑 확인
+                        for mapping in service_mappings:
+                            print(f"Checking mapping: {mapping}")  # 디버깅용
+                            if pod.upper() == mapping['stow_code'].upper():
+                                print(f"Found stow_code match: {pod} = {mapping['stow_code']}")  # 디버깅용
+                                # stow_code가 일치하면 해당 port를 POD로 사용하고 stow_code를 Stow 값으로 설정
+                                ws.cell(row=row, column=1, value=mapping['port'])  # POD 열 업데이트
+                                ws.cell(row=row, column=6, value=mapping['stow_code'])  # Stow 열 업데이트
+                                break
+                            elif pod.upper() == mapping['port'].upper():
+                                print(f"Found port match: {pod} = {mapping['port']}")  # 디버깅용
+                                # port가 일치하면 해당 stow_code 사용
+                                ws.cell(row=row, column=1, value=mapping['port'])  # POD 열 업데이트
+                                ws.cell(row=row, column=6, value=mapping['stow_code'])  # Stow 열 업데이트
+                                break
+                
+                # 파일 저장
+                wb.save(output_file)
+                wb.close()
+                
+                messagebox.showinfo("성공", f"Stow Code가 적용되었습니다.")
+                
+                pod_text = "\n".join(sorted(pod_values))  # 정렬된 고유값들을 세로로 나열
+                
                 # POD 클릭 이벤트 핸들러 
                 def on_pod_click(event):
-                    # POD 선택 다이얼로그 표시
-                    dialog = PodSelectionDialog(self.root, pod_values)
-                    self.root.wait_window(dialog)
+                    # Label의 현재 텍스트 가져오기
+                    clicked_text = event.widget.cget("text")
+                    # 클릭된 위치의 y 좌표를 기반으로 라인 계산
+                    y_position = event.y
+                    line_height = event.widget.winfo_height() / len(clicked_text.split('\n'))
+                    clicked_line_index = int(y_position / line_height)
+                    # 클릭된 라인의 텍스트 가져오기
+                    clicked_line = clicked_text.split('\n')[clicked_line_index]
                     
-                    # 선택된 POD가 있으면 처리
-                    if dialog.selected_pods:
+                    if clicked_line:
+                        selected_pod = clicked_line.strip()
                         # 새로운 POD 값 입력 다이얼로그
                         new_pod = tk.simpledialog.askstring("POD 변경", 
-                            f"선택된 POD: {', '.join(dialog.selected_pods)}\n새로운 POD 값을 입력하세요:",
+                            f"현재 POD: {selected_pod}\n새로운 POD 값을 입력하세요:",
                             parent=self.root)
                         
                         if new_pod:
@@ -2595,27 +2659,21 @@ class ContainerConverter:
                             wb = openpyxl.load_workbook(output_file)
                             ws = wb.active
                             
-                            # 선택된 모든 POD 값 변경
-                            for selected_pod in dialog.selected_pods:
-                                for row in range(7, ws.max_row + 1):
-                                    if ws.cell(row=row, column=1).value == selected_pod:
-                                        ws.cell(row=row, column=6).value = selected_pod
-                                        ws.cell(row=row, column=1).value = new_pod
-                                
-                                # POD 값 업데이트
-                                pod_values.remove(selected_pod)
-                            
-                            pod_values.add(new_pod)
+                            # POD 값 변경
+                            for row in range(7, ws.max_row + 1):
+                                if ws.cell(row=row, column=1).value == selected_pod:
+                                    ws.cell(row=row, column=6).value = selected_pod
+                                    ws.cell(row=row, column=1).value = new_pod
                             
                             # 파일 저장
                             wb.save(output_file)
                             wb.close()
                             
                             # POD 라벨 업데이트
+                            pod_values.remove(selected_pod)
+                            pod_values.add(new_pod)
                             new_pod_text = "\n".join(sorted(pod_values))
                             self.pod_label.config(text=f"{new_pod_text}\n")
-                            
-                            messagebox.showinfo("성공", f"선택된 POD들이 {new_pod}로 변경되었습니다.")
                             
                             messagebox.showinfo("성공", f"POD가 {selected_pod}에서 {new_pod}로 변경되었습니다.")
                 
@@ -2630,15 +2688,8 @@ class ContainerConverter:
             messagebox.showerror("오류", f"EDI 파일 처리 중 오류가 발생했습니다: {str(e)}")
 
     def setup_asc_parser_tab(self):
-        """ASC Parser 탭 설정"""
-        # 좌우 분할을 위한 프레임
-        left_frame = ttk.Frame(self.asc_parser_tab)
-        right_frame = ttk.Frame(self.asc_parser_tab)
-        left_frame.pack(side="left", fill="both", expand=True, padx=5)
-        right_frame.pack(side="right", fill="both", expand=True, padx=5)
-
-        # 왼쪽: ASC 파일 드래그 앤 드롭 영역
-        drop_frame = ttk.LabelFrame(left_frame, text="Drag and Drop ASC File")
+        # 드래그 앤 드롭 영역 생성
+        drop_frame = ttk.LabelFrame(self.asc_parser_tab, text="Drag and Drop ASC File")
         drop_frame.pack(fill='both', expand=True, padx=5, pady=5)
 
         # 드롭 영역 레이블
@@ -2650,21 +2701,8 @@ class ContainerConverter:
         self.asc_drop_label.dnd_bind('<<Drop>>', self.drop_asc_file)
 
         # 상태 표시 레이블
-        self.asc_status_label = ttk.Label(left_frame, text="")
+        self.asc_status_label = ttk.Label(self.asc_parser_tab, text="")
         self.asc_status_label.pack(fill='x', padx=5, pady=5)
-
-        # 오른쪽: 요약 정보 표시 영역
-        summary_frame = ttk.LabelFrame(right_frame, text="ASC File Summary")
-        summary_frame.pack(fill='both', expand=True, padx=5, pady=5)
-
-        # 요약 정보를 표시할 텍스트 영역
-        self.asc_summary_text = tk.Text(summary_frame, wrap=tk.WORD, width=40, height=20)
-        self.asc_summary_text.pack(fill='both', expand=True, padx=5, pady=5)
-
-        # 스크롤바 추가
-        scrollbar = ttk.Scrollbar(summary_frame, orient="vertical", command=self.asc_summary_text.yview)
-        scrollbar.pack(side="right", fill="y")
-        self.asc_summary_text.config(yscrollcommand=scrollbar.set)
 
     def drop_asc_file(self, event):
         file_path = event.data
@@ -2681,227 +2719,38 @@ class ContainerConverter:
             messagebox.showerror("Error", f"Error processing ASC file: {str(e)}")
 
     def process_asc_file(self, file_path):
-        try:
-            # 클래스 변수 초기화
-            self.OH = "0"
-            self.Oleft = "0"
-            self.Oright = "0"
-            
-            # ASC 파일 읽기
-            with open(file_path, 'r', encoding='utf-8') as file:
-                lines = file.readlines()
+        # ASC 파일 읽기
+        with open(file_path, 'r', encoding='utf-8') as file:
+            lines = file.readlines()
 
-            # 헤더 정보 파싱 (첫 번째 줄)
-            header = lines[0].strip()
-            header_parts = header.split('/')
-            
-            # 헤더에서 정보 추출
-            vessel = ""
-            voy = ""
-            port = ""
-            formatted_date_time = ""
-            
-            # 헤더 파싱
-            for part in header_parts:
-                part = part.strip()
-                if "MSC" in part:  # vessel name
-                    vessel = part
-                elif "FT" in part:  # voyage
-                    voy = part.strip()
-                elif "POD:" in part:  # port
-                    port = part.split(":")[1]
-                elif len(part) == 8 and part.isdigit():  # date
-                    date_str = part
-                    formatted_date_time = f"{date_str[6:8]}.{date_str[4:6]}.{date_str[:4]}"
-            
-            # 엑셀 워크북 생성
-            wb = openpyxl.Workbook()
-            ws = wb.active
-            ws.title = "Sheet1"
-
-            # 기본 폰트 및 정렬 설정
-            default_font = Font(name='Arial', size=10)
-            default_alignment = Alignment(horizontal='left', vertical='center')
-            
-            # 기본 열 너비 설정
-            for column in range(1, 26):  # A to Y
-                ws.column_dimensions[utils.get_column_letter(column)].width = 12
-
-            # 헤더 설정 (6번째 행)
-            headers = ["POD", "CELL", "Cntr No.", "OPR", "POL", "STOW", "FPOD", "POR", 
-                      "TpSz", "WGT", "F/E", "SP", "Temp", "DG", "UNNO", "PG", "FP",
-                      "PrePos", "ACC.", "RSN", "Over Dimension", "Over Slot", "Remark",
-                      "Void.Calc", "Void.Calc"]
-            
-            for col, header in enumerate(headers, 1):
-                ws.cell(row=6, column=col, value=header)
-
-            # 변수 초기화
-            cntr_count = 6
-            
-            # ASC 데이터 파싱 (세 번째 줄부터)
-            for line in lines[2:]:  # Skip header and PORT ROTATION line
-                if line.strip() and not line.startswith('$'):  # Skip empty lines and header lines
-                    parts = line.strip().split()
-                    if len(parts) >= 4:  # 최소 필요한 필드 수 확인
-                        cntr_count += 1
-                        
-                        # 기본 정보 추출
-                        cell = parts[0]  # CELL
-                        container_no = parts[1]  # Container No.
-                        
-                        # 복합 정보 파싱 (예: MSKTRISTISTPSE)
-                        info = parts[2]
-                        carrier = info[:3]  # MSK
-                        pod = info[3:8]  # TRIST
-                        pol = info[8:11] if len(info) >= 11 else ""  # PSE
-                        
-                        # 컨테이너 타입 및 무게 정보 파싱
-                        type_weight = parts[3]
-                        container_type = ""
-                        weight = ""
-                        fe_status = ""
-                        
-                        # 컨테이너 타입과 무게 추출 (예: PSEKWSAA40HC130F)
-                        for i in range(len(type_weight)):
-                            if type_weight[i:i+4] in ["20DV", "40HC", "40DV", "45HC"]:
-                                container_type = type_weight[i:i+4]
-                                # 무게와 F/E 상태 추출
-                                remaining = type_weight[i+4:]
-                                # 숫자만 추출하여 무게로
-                                weight = ''.join(c for c in remaining if c.isdigit())
-                                # 마지막 문자가 F 또는 E인 경우
-                                if remaining and remaining[-1] in ['F', 'E']:
-                                    fe_status = remaining[-1]
-                                break
-                        
-                        # 데이터 입력
-                        ws.cell(row=cntr_count, column=1, value=pod)  # POD
-                        ws.cell(row=cntr_count, column=2, value=cell)  # CELL
-                        ws.cell(row=cntr_count, column=3, value=container_no)  # Container No.
-                        ws.cell(row=cntr_count, column=4, value=carrier)  # OPR
-                        ws.cell(row=cntr_count, column=5, value=pol)  # POL
-                        ws.cell(row=cntr_count, column=9, value=container_type)  # TpSz
-                        
-                        # 무게 처리
-                        if weight:
-                            try:
-                                weight_value = float(weight)
-                                ws.cell(row=cntr_count, column=10, value=weight_value)  # WGT
-                                ws.cell(row=cntr_count, column=10).number_format = "0.0"
-                            except ValueError:
-                                ws.cell(row=cntr_count, column=10, value=0)
-                        
-                        ws.cell(row=cntr_count, column=11, value=fe_status)  # F/E
-            
-            # 상단 정보 추가
-            ws.cell(row=1, column=1, value="                                                               Inquary Summary(Detail Information)")
-            ws.cell(row=2, column=1, value=f"Vessel Name : {vessel}                                                                                                   Data : {formatted_date_time}")
-            ws.cell(row=3, column=1, value=f"Voyage No : {voy}                                                                                                   Port : {port}")
-            ws.cell(row=4, column=1, value="Operator Code : ---")
-            
-            # POD 요약 생성
-            pod_summary = {}
-            pol_pod_summary = {}
-            for row in range(7, ws.max_row + 1):
-                pod = ws.cell(row=row, column=1).value
-                pol = ws.cell(row=row, column=5).value
-                
-                if pod and pod != "UNSET":
-                    pod_summary[pod] = pod_summary.get(pod, 0) + 1
-                    if pol == port:
-                        pol_pod_summary[pod] = pol_pod_summary.get(pod, 0) + 1
-
-            # 요약 정보 업데이트
-            self.update_asc_summary(pod_summary, pol_pod_summary, vessel, voy, port)
-
-            # 파일 저장
-            output_filename = f"{vessel} {voy} {port}.xlsx"
-            output_file = os.path.join(os.path.dirname(file_path), output_filename)
-            
-            if os.path.exists(output_file):
-                try:
-                    os.remove(output_file)
-                except PermissionError:
-                    messagebox.showerror("오류", "기존 파일이 열려있습니다. 파일을 닫고 다시 시도해주세요.")
-                    return
-
-            try:
-                wb.save(output_file)
-                if os.path.exists(output_file) and os.path.getsize(output_file) > 0:
-                    messagebox.showinfo("성공", f"ASC 파일이 성공적으로 변환되었습니다.\n저장 위치: {output_file}")
-                else:
-                    messagebox.showerror("오류", "파일이 올바르게 생성되지 않았습니다.")
-            except Exception as e:
-                messagebox.showerror("오류", f"파일 저장 중 오류가 발생했습니다: {str(e)}")
-            finally:
-                wb.close()
-
-        except Exception as e:
-            messagebox.showerror("오류", f"ASC 파일 처리 중 오류가 발생했습니다: {str(e)}")
-            print(f"Error processing ASC file: {str(e)}")  # 디버깅용
-
-    def update_asc_summary(self, pod_summary, pol_pod_summary, vessel, voy, port):
-        """ASC 파일 요약 정보 업데이트"""
-        # 텍스트 영역 초기화
-        self.asc_summary_text.delete(1.0, tk.END)
+        # 헤더 정보 파싱
+        header = lines[0].strip()
+        header_parts = header.split('/')
         
-        # 색상 태그 설정 (배경색과 보색)
-        self.asc_summary_text.tag_configure("krpus", 
-            background="#90EE90",  # 연한 녹색 배경
-            foreground="#FF1493")  # 진한 분홍색 글자
-        
-        self.asc_summary_text.tag_configure("krkan", 
-            background="#FFD700",  # 골드 배경
-            foreground="#000080")  # 네이비 글자
-        
-        self.asc_summary_text.tag_configure("krinc", 
-            background="#87CEEB",  # 하늘색 배경
-            foreground="#FF4500")  # 주황색 글자
-        
-        # 선박 및 항차 정보 추가
-        self.asc_summary_text.insert(tk.END, f"Vessel:  {vessel}\n")
-        self.asc_summary_text.insert(tk.END, f"Voyage:  {voy}\n") 
-        self.asc_summary_text.insert(tk.END, f"Port:    {port}\n\n")
-        
-        # 전체 POD Summary 출력
-        self.asc_summary_text.insert(tk.END, "=== Total POD Summary ===\n\n")
-        
-        total_containers = 0
-        for pod, count in sorted(pod_summary.items()):  # POD 알파벳 순으로 정렬
-            # POD별로 다른 배경색과 글자색 적용
-            if pod == "KRPUS":
-                self.asc_summary_text.insert(tk.END, f"{pod}: {count}\n", "krpus")
-            elif pod == "KRKAN":
-                self.asc_summary_text.insert(tk.END, f"{pod}: {count}\n", "krkan")
-            elif pod == "KRINC":
-                self.asc_summary_text.insert(tk.END, f"{pod}: {count}\n", "krinc")
-            else:
-                self.asc_summary_text.insert(tk.END, f"{pod}: {count}\n")
-            total_containers += count
-        
-        self.asc_summary_text.insert(tk.END, f"\nTotal: {total_containers}\n\n")
+        # 데이터 파싱
+        data = []
+        for line in lines[1:]:
+            if line.strip():
+                parts = line.strip().split()
+                if len(parts) >= 4:  # 최소 필요한 필드 수 확인
+                    container_info = {
+                        'Container No': parts[1],
+                        'Carrier': parts[2],
+                        'Container Type': parts[3],
+                        'Destination': parts[-1] if len(parts) > 4 else ''
+                    }
+                    data.append(container_info)
 
-        # POL 기준 POD Summary 출력
-        self.asc_summary_text.insert(tk.END, f"=== POD Summary (From {port}) ===\n\n")
-        
-        pol_total_containers = 0
-        for pod, count in sorted(pol_pod_summary.items()):  # POD 알파벳 순으로 정렬
-            # POD별로 다른 배경색과 글자색 적용
-            if pod == "KRPUS":
-                self.asc_summary_text.insert(tk.END, f"{pod}: {count}\n", "krpus")
-            elif pod == "KRKAN":
-                self.asc_summary_text.insert(tk.END, f"{pod}: {count}\n", "krkan")
-            elif pod == "KRINC":
-                self.asc_summary_text.insert(tk.END, f"{pod}: {count}\n", "krinc")
-            else:
-                self.asc_summary_text.insert(tk.END, f"{pod}: {count}\n")
-            pol_total_containers += count
-        
-        self.asc_summary_text.insert(tk.END, f"\nTotal from {port}: {pol_total_containers}")
+        # DataFrame 생성
+        df = pd.DataFrame(data)
 
+        # Excel 파일로 저장
+        output_path = os.path.splitext(file_path)[0] + '_parsed.xlsx'
+        df.to_excel(output_path, index=False)
 
-
+        # 상태 업데이트
+        self.asc_status_label.config(text=f"File processed successfully. Saved as: {output_path}")
+        messagebox.showinfo("Success", f"ASC file has been processed and saved as Excel file:\n{output_path}")
 
 if __name__ == "__main__":
     app = ContainerConverter()
