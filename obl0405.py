@@ -14,7 +14,7 @@ from openpyxl.styles import Font, Alignment
 from openpyxl import utils
 import re
 
-# pyinstaller -w -F --add-binary="C:/Users/kod03/AppData/Local/Programs/Python/Python311/tcl/tkdnd2.8;tkdnd2.8" obl0330.py
+# pyinstaller -w -F --add-binary="C:/Users/kod03/AppData/Local/Programs/Python/Python311/tcl/tkdnd2.8;tkdnd2.8" obl0405_4.py
 
 class ContainerConverter:
     # 전역 변수 선언

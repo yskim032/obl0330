@@ -2954,22 +2954,15 @@ class ContainerConverter:
         edit_frame = ttk.LabelFrame(right_frame, text="컨테이너 편집")
         edit_frame.pack(fill="both", expand=True, pady=5)
 
-        # 컨테이너 번호 입력 영역과 카운트 표시
+        # 컨테이너 번호 입력 영역 (여러 줄 텍스트 영역으로 변경)
         container_frame = ttk.Frame(edit_frame)
         container_frame.pack(fill="both", expand=True, padx=5, pady=5)
-        
-        # 컨테이너 카운트 표시 레이블 추가
-        self.container_count_label = ttk.Label(container_frame, text="컨테이너 수: 0")
-        self.container_count_label.pack(anchor="e", padx=5)
         
         ttk.Label(container_frame, text="컨테이너 번호 (세로로 입력):").pack(anchor="w", padx=5)
         
         # 스크롤 가능한 텍스트 영역으로 변경
         self.container_text = tk.Text(container_frame, height=10, width=30)
         self.container_text.pack(fill="both", expand=True, padx=5, pady=5)
-        
-        # 텍스트 변경 이벤트 바인딩
-        self.container_text.bind('<<Modified>>', self.update_container_count)
         
         # POD 입력 영역 추가
         pod_frame = ttk.Frame(edit_frame)
@@ -2986,9 +2979,16 @@ class ContainerConverter:
         ttk.Button(button_frame, text="컨테이너 삭제", command=self.delete_containers).pack(side=tk.LEFT, padx=5)
         ttk.Button(button_frame, text="POD 변경", command=self.change_pods).pack(side=tk.LEFT, padx=5)
         
-        # 상태 표시 레이블
+        # 상태 표시 레이블 (연한 초록색 배경 추가)
         self.obl_editor_status_label = ttk.Label(edit_frame, text="")
         self.obl_editor_status_label.pack(fill="x", padx=5, pady=5)
+        
+        # 연한 초록색 배경을 위한 스타일 설정
+        style = ttk.Style()
+        style.configure("Green.TLabel", background="#e6ffe6")
+        
+        # 상태 레이블에 스타일 적용
+        self.obl_editor_status_label.configure(style="Green.TLabel")
         
         # 초기 상태 설정
         self.obl_editor_file_path = None
